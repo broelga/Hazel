@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Protean"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/ibroel/dev/Protean/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/ibroel/dev/Protean/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/ibroel/dev/Protean/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/ibroel/dev/Protean/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/ibroel/dev/Protean/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/ibroel/dev/Protean/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/ibroel/dev/Protean/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/ibroel/dev/Protean/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/ibroel/dev/Protean/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/ibroel/dev/Protean/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/ibroel/dev/Protean/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/ibroel/dev/Protean/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/ibroel/dev/Protean/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/ibroel/dev/Protean/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/ibroel/dev/Protean/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Protean">
+				<Option output="/Users/ibroel/dev/Protean/cmake-build-debug/Protean" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/ibroel/dev/Protean/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/ibroel/dev/Protean/Protean/src"/>
+					<Add directory="/Users/ibroel/dev/Protean/Protean/vendor/spdlog/include"/>
+					<Add directory="/Users/ibroel/dev/Protean/Sandbox/src"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/11.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/ibroel/dev/Protean/cmake-build-debug/Makefile&quot;  VERBOSE=1 Protean"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/ibroel/dev/Protean/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/ibroel/dev/Protean/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/ibroel/dev/Protean/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Protean/fast">
+				<Option output="/Users/ibroel/dev/Protean/cmake-build-debug/Protean" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/ibroel/dev/Protean/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/ibroel/dev/Protean/Protean/src"/>
+					<Add directory="/Users/ibroel/dev/Protean/Protean/vendor/spdlog/include"/>
+					<Add directory="/Users/ibroel/dev/Protean/Sandbox/src"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/bin/../include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/lib/clang/11.0.0/include"/>
+					<Add directory="/Library/Developer/CommandLineTools/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/ibroel/dev/Protean/cmake-build-debug/Makefile&quot;  VERBOSE=1 Protean/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/ibroel/dev/Protean/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/ibroel/dev/Protean/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/ibroel/dev/Protean/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/ibroel/dev/Protean/Protean/src/Protean.h">
+			<Option target="Protean"/>
+		</Unit>
+		<Unit filename="/Users/ibroel/dev/Protean/Protean/src/Protean/Application.cpp">
+			<Option target="Protean"/>
+		</Unit>
+		<Unit filename="/Users/ibroel/dev/Protean/Protean/src/Protean/Application.h">
+			<Option target="Protean"/>
+		</Unit>
+		<Unit filename="/Users/ibroel/dev/Protean/Protean/src/Protean/Core.h">
+			<Option target="Protean"/>
+		</Unit>
+		<Unit filename="/Users/ibroel/dev/Protean/Protean/src/Protean/EntryPoint.h">
+			<Option target="Protean"/>
+		</Unit>
+		<Unit filename="/Users/ibroel/dev/Protean/Protean/src/Protean/Events/ApplicationEvent.h">
+			<Option target="Protean"/>
+		</Unit>
+		<Unit filename="/Users/ibroel/dev/Protean/Protean/src/Protean/Events/Event.h">
+			<Option target="Protean"/>
+		</Unit>
+		<Unit filename="/Users/ibroel/dev/Protean/Protean/src/Protean/Events/KeyEvent.h">
+			<Option target="Protean"/>
+		</Unit>
+		<Unit filename="/Users/ibroel/dev/Protean/Protean/src/Protean/Events/MouseEvent.h">
+			<Option target="Protean"/>
+		</Unit>
+		<Unit filename="/Users/ibroel/dev/Protean/Protean/src/Protean/Log.cpp">
+			<Option target="Protean"/>
+		</Unit>
+		<Unit filename="/Users/ibroel/dev/Protean/Protean/src/Protean/Log.h">
+			<Option target="Protean"/>
+		</Unit>
+		<Unit filename="/Users/ibroel/dev/Protean/Sandbox/src/Sandbox.cpp">
+			<Option target="Protean"/>
+		</Unit>
+		<Unit filename="/Users/ibroel/dev/Protean/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
