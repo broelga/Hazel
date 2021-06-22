@@ -4,3 +4,8 @@
 [submodule "Protean/vendor/cotire"]
 	path = Protean/vendor/cotire
 	url = https://github.com/sakra/cotire.git
+
+	
+[submodule "Protean/vendor/GLFW"]
+	path = Protean/vendor/GLFW
+	url = https://github.com/broelga/glfw
