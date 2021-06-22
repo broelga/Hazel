@@ -6,15 +6,15 @@
 
 namespace Protean {
 
-class Application {
-public:
-  Application();
-  virtual ~Application();
+  class Application {
+	public:
+		Application();
+		virtual ~Application();
 
-  [[noreturn]] void Run();
-};
+		void Run();
+  };
 
 // To be defined by CLIENT
-Application *CreateApplication();
+  Application *CreateApplication();
 }
 

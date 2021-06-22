@@ -1,12 +1,6 @@
-//
-// Created by Joel Thomas on 6/20/21.
-//
-
 #pragma once
 
 #include "Event.h"
-
-#include <sstream>
 
 namespace Protean {
 

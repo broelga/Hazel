@@ -1,7 +1,3 @@
-//
-// Created by Joel Thomas on 6/17/21.
-//
-
 #pragma once
 
 int main(int argc, char **argv) {

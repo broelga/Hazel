@@ -1,10 +1,4 @@
-//
-// Created by Joel Thomas on 6/17/21.
-//
-
 #pragma once
-
-#include <memory>
 
 #include "Core.h"
 #include "spdlog/spdlog.h"
