@@ -1,0 +1,83 @@
+/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/ibroel/dev/Marble
+-- The C compiler identification is AppleClang 11.0.0.11000033
+-- The CXX compiler identification is AppleClang 11.0.0.11000033
+-- Detecting C compiler ABI info
+-- Detecting C compiler ABI info - done
+-- Check for working C compiler: /Library/Developer/CommandLineTools/usr/bin/cc - skipped
+-- Detecting C compile features
+-- Detecting C compile features - done
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /Library/Developer/CommandLineTools/usr/bin/c++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- cotire 1.8.1 loaded.
+-- Found OpenGL: /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/System/Library/Frameworks/OpenGL.framework   
+-- Looking for pthread.h
+-- Looking for pthread.h - found
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD
+-- Performing Test CMAKE_HAVE_LIBC_PTHREAD - Success
+-- Found Threads: TRUE  
+-- Using Cocoa for window creation
+-- CXX target Marbled cotired.
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /Users/ibroel/dev/Marble/cmake-build-debug
+
+Cannot get compiler information:
+	Compiler exited with error code 1: /Library/Developer/CommandLineTools/usr/bin/c++ -xc++ -I/Users/ibroel/dev/Marble/Marble/vendor/GLFW/include -I/Users/ibroel/dev/Marble/Marble/src -I/Users/ibroel/dev/Marble/Marble/vendor/spdlog/include -I/Users/ibroel/dev/Marble/Sandbox/src -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -include /Users/ibroel/dev/Marble/cmake-build-debug/cotire/Marbled_CXX_prefix.hxx -std=gnu++17 -fpch-preprocess -v -dD -E
+	Apple clang version 11.0.0 (clang-1100.0.33.16)
+	Target: x86_64-apple-darwin20.5.0
+	Thread model: posix
+	InstalledDir: /Library/Developer/CommandLineTools/usr/bin
+	 "/Library/Developer/CommandLineTools/usr/bin/clang" -cc1 -triple x86_64-apple-macosx10.15.0 -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -E -disable-free -disable-llvm-verifier -discard-value-names -main-file-name compiler-file12644208147070293118 -mrelocation-model pic -pic-level 2 -mthread-model posix -mdisable-fp-elim -fno-strict-return -masm-verbose -munwind-tables -target-sdk-version=10.15 -target-cpu penryn -dwarf-column-info -debug-info-kind=standalone -dwarf-version=4 -debugger-tuning=lldb -ggnu-pubnames -target-linker-version 530 -v -resource-dir /Library/Developer/CommandLineTools/usr/lib/clang/11.0.0 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -include-pch /Users/ibroel/dev/Marble/cmake-build-debug/cotire/Marbled_CXX_prefix.hxx.pch -I /Users/ibroel/dev/Marble/Marble/vendor/GLFW/include -I /Users/ibroel/dev/Marble/Marble/src -I /Users/ibroel/dev/Marble/Marble/vendor/spdlog/include -I /Users/ibroel/dev/Marble/Sandbox/src -D ___CIDR_DEFINITIONS_END -stdlib=libc++ -internal-isystem /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1 -Wno-framework-include-private-from-public -Wno-atimport-in-framework-header -Wno-extra-semi-stmt -Wno-quoted-include-in-framework-header -std=gnu++17 -fdeprecated-macro -fdebug-compilation-dir /Users/ibroel/dev/Marble/cmake-build-debug -ferror-limit 19 -fmessage-length 0 -stack-protector 1 -fstack-check -mdarwin-stkchk-strong-link -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fobjc-runtime=macosx-10.15.0 -fcxx-exceptions -fexceptions -fmax-type-align=16 -fdiagnostics-show-option -dD -o - -x c++ /private/var/folders/sj/3980l34j31n8sjg7r98yyxxh0000gn/T/compiler-file12644208147070293118
+	clang -cc1 version 11.0.0 (clang-1100.0.33.16) default target x86_64-apple-darwin20.5.0
+	ignoring nonexistent directory "/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/usr/include/c++/v1"
+	ignoring nonexistent directory "/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/usr/local/include"
+	ignoring nonexistent directory "/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/Library/Frameworks"
+	#include "..." search starts here:
+	#include <...> search starts here:
+	 /Users/ibroel/dev/Marble/Marble/vendor/GLFW/include
+	 /Users/ibroel/dev/Marble/Marble/src
+	 /Users/ibroel/dev/Marble/Marble/vendor/spdlog/include
+	 /Users/ibroel/dev/Marble/Sandbox/src
+	 /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1
+	 /Library/Developer/CommandLineTools/usr/lib/clang/11.0.0/include
+	 /Library/Developer/CommandLineTools/usr/include
+	 /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/usr/include
+	 /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/System/Library/Frameworks (framework directory)
+	End of search list.
+	<built-in>:1:10: fatal error: '/Users/ibroel/dev/Marbled/cmake-build-debug/cotire/Marbled_CXX_prefix.hxx' file not found
+	#include "/Users/ibroel/dev/Marbled/cmake-build-debug/cotire/Marbled_CXX_prefix.hxx"
+	         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	1 error generated.
+	
+	
+	Compiler exited with error code 1: /Library/Developer/CommandLineTools/usr/bin/c++ -xc++ -I/Users/ibroel/dev/Marble/Marble/vendor/GLFW/include -I/Users/ibroel/dev/Marble/Marble/src -I/Users/ibroel/dev/Marble/Marble/vendor/spdlog/include -I/Users/ibroel/dev/Marble/Sandbox/src -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -std=gnu++17 -include /Users/ibroel/dev/Marble/cmake-build-debug/cotire/Marbled_CXX_prefix.hxx -fpch-preprocess -v -dD -E
+	Apple clang version 11.0.0 (clang-1100.0.33.16)
+	Target: x86_64-apple-darwin20.5.0
+	Thread model: posix
+	InstalledDir: /Library/Developer/CommandLineTools/usr/bin
+	 "/Library/Developer/CommandLineTools/usr/bin/clang" -cc1 -triple x86_64-apple-macosx10.15.0 -Wdeprecated-objc-isa-usage -Werror=deprecated-objc-isa-usage -E -disable-free -disable-llvm-verifier -discard-value-names -main-file-name compiler-file12644208147070293118 -mrelocation-model pic -pic-level 2 -mthread-model posix -mdisable-fp-elim -fno-strict-return -masm-verbose -munwind-tables -target-sdk-version=10.15 -target-cpu penryn -dwarf-column-info -debug-info-kind=standalone -dwarf-version=4 -debugger-tuning=lldb -ggnu-pubnames -target-linker-version 530 -v -resource-dir /Library/Developer/CommandLineTools/usr/lib/clang/11.0.0 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk -include-pch /Users/ibroel/dev/Marble/cmake-build-debug/cotire/Marbled_CXX_prefix.hxx.pch -I /Users/ibroel/dev/Marble/Marble/vendor/GLFW/include -I /Users/ibroel/dev/Marble/Marble/src -I /Users/ibroel/dev/Marble/Marble/vendor/spdlog/include -I /Users/ibroel/dev/Marble/Sandbox/src -D ___CIDR_DEFINITIONS_END -stdlib=libc++ -internal-isystem /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1 -Wno-framework-include-private-from-public -Wno-atimport-in-framework-header -Wno-extra-semi-stmt -Wno-quoted-include-in-framework-header -std=gnu++17 -fdeprecated-macro -fdebug-compilation-dir /Users/ibroel/dev/Marble/cmake-build-debug -ferror-limit 19 -fmessage-length 0 -stack-protector 1 -fstack-check -mdarwin-stkchk-strong-link -fblocks -fencode-extended-block-signature -fregister-global-dtors-with-atexit -fobjc-runtime=macosx-10.15.0 -fcxx-exceptions -fexceptions -fmax-type-align=16 -fdiagnostics-show-option -dD -o - -x c++ /private/var/folders/sj/3980l34j31n8sjg7r98yyxxh0000gn/T/compiler-file12644208147070293118
+	clang -cc1 version 11.0.0 (clang-1100.0.33.16) default target x86_64-apple-darwin20.5.0
+	ignoring nonexistent directory "/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/usr/include/c++/v1"
+	ignoring nonexistent directory "/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/usr/local/include"
+	ignoring nonexistent directory "/Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/Library/Frameworks"
+	#include "..." search starts here:
+	#include <...> search starts here:
+	 /Users/ibroel/dev/Marble/Marble/vendor/GLFW/include
+	 /Users/ibroel/dev/Marble/Marble/src
+	 /Users/ibroel/dev/Marble/Marble/vendor/spdlog/include
+	 /Users/ibroel/dev/Marble/Sandbox/src
+	 /Library/Developer/CommandLineTools/usr/bin/../include/c++/v1
+	 /Library/Developer/CommandLineTools/usr/lib/clang/11.0.0/include
+	 /Library/Developer/CommandLineTools/usr/include
+	 /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/usr/include
+	 /Library/Developer/CommandLineTools/SDKs/MacOSX10.15.sdk/System/Library/Frameworks (framework directory)
+	End of search list.
+	<built-in>:1:10: fatal error: '/Users/ibroel/dev/Marbled/cmake-build-debug/cotire/Marbled_CXX_prefix.hxx' file not found
+	#include "/Users/ibroel/dev/Marbled/cmake-build-debug/cotire/Marbled_CXX_prefix.hxx"
+	         ^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	1 error generated.
+	
+	

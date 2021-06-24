@@ -1,0 +1,20 @@
+//
+// Created by Joel Thomas on 6/17/21.
+//
+
+#pragma once
+
+namespace Marble {
+
+  class Application {
+	public:
+		Application();
+		virtual ~Application();
+
+		void Run();
+  };
+
+// To be defined by CLIENT
+  Application *CreateApplication();
+}
+
