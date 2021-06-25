@@ -1,9 +1,0 @@
-/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /Users/ibroel/dev/Marble
--- cotire 1.8.1 loaded.
--- Using Cocoa for window creation
--- Configuring done
--- Generating done
--- Build files have been written to: /Users/ibroel/dev/Marble/cmake-build-debug
-
-Problems were encountered while collecting compiler information:
-	<built-in>:1:10: fatal error: '/Users/ibroel/dev/Marble/cmake-build-debug/cotire/Marbled_CXX_prefix.hxx' file not found
