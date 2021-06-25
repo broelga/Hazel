@@ -6,15 +6,16 @@
 
 namespace Marble {
 
-  class Application {
-	public:
-		Application();
-		virtual ~Application();
+    class Application {
+    public:
+        Application();
 
-		void Run();
-  };
+        virtual ~Application();
+
+        void Run();
+    };
 
 // To be defined by CLIENT
-  Application *CreateApplication();
+    Application *CreateApplication();
 }
 

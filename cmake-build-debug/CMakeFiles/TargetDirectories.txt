@@ -1,0 +1,13 @@
+/Users/ibroel/dev/Marble/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/ibroel/dev/Marble/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/ibroel/dev/Marble/cmake-build-debug/CMakeFiles/all_pch.dir
+/Users/ibroel/dev/Marble/cmake-build-debug/CMakeFiles/Marbled_pch.dir
+/Users/ibroel/dev/Marble/cmake-build-debug/CMakeFiles/Marbled.dir
+/Users/ibroel/dev/Marble/cmake-build-debug/CMakeFiles/clean_cotire.dir
+/Users/ibroel/dev/Marble/cmake-build-debug/CMakeFiles/all_unity.dir
+/Users/ibroel/dev/Marble/cmake-build-debug/CMakeFiles/Marbled_unity.dir
+/Users/ibroel/dev/Marble/cmake-build-debug/Marble/vendor/GLFW/CMakeFiles/rebuild_cache.dir
+/Users/ibroel/dev/Marble/cmake-build-debug/Marble/vendor/GLFW/CMakeFiles/edit_cache.dir
+/Users/ibroel/dev/Marble/cmake-build-debug/Marble/vendor/GLFW/src/CMakeFiles/rebuild_cache.dir
+/Users/ibroel/dev/Marble/cmake-build-debug/Marble/vendor/GLFW/src/CMakeFiles/edit_cache.dir
+/Users/ibroel/dev/Marble/cmake-build-debug/Marble/vendor/GLFW/src/CMakeFiles/glfw.dir
