@@ -1,7 +1,0 @@
--rw-r--r--@ 1 ibroel  staff     6148 Jun 24 15:09 /Users/ibroel/dev/Marble/.DS_Store
--rw-r--r--@ 1 ibroel  staff     8196 Jun 24 15:06 /Users/ibroel/dev/Marble/cmake-build-debug/CMakeFiles/.DS_Store
--rw-r--r--@ 1 ibroel  staff     6148 Jun 24 15:06 /Users/ibroel/dev/Marble/cmake-build-debug/.DS_Store
--rw-r--r--@ 1 ibroel  staff     6148 Jun 24 15:06 /Users/ibroel/dev/Marble/Sandbox/.DS_Store
--rw-r--r--@ 1 ibroel  staff     6148 Jun 24 15:06 /Users/ibroel/dev/Marble/Marble/vendor/.DS_Store
--rw-r--r--@ 1 ibroel  staff     6148 Jun 24 15:06 /Users/ibroel/dev/Marble/Marble/src/.DS_Store
--rw-r--r--@ 1 ibroel  staff     6148 Jun 24 15:06 /Users/ibroel/dev/Marble/Marble/.DS_Store
