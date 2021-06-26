@@ -15,7 +15,10 @@ include(cotire)
 # OpenGL / GLFW
 find_package(OpenGL REQUIRED)
 include_directories(${OPENGL_INCLUDE_DIRS})
-include_directories(Marble/vendor/GLFW/include)
+
+#find_package(glfw3 REQUIRED)
+include_directories(${GLFW_INCLUDE_DIRS})
+
 set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
@@ -46,9 +49,10 @@ add_executable(Marbled
         Marble/src/Marble/Log.h
         Marble/src/Marble/Log.cpp
         Marble/src/Marble/Events/ApplicationEvent.h Marble/src/Marble/Events/Event.h
-        Marble/src/Marble/Events/KeyEvent.h Marble/src/Marble/Events/MouseEvent.h)
+        Marble/src/Marble/Events/KeyEvent.h Marble/src/Marble/Events/MouseEvent.h Marble/src/Marble/Window.h Marble/Platform/OSX/MacWindow.cpp Marble/Platform/OSX/MacWindow.h)
 
 ## Links
+target_link_libraries(Marbled "-framework OpenGL")
 target_link_libraries(Marbled glfw ${GLFW_LIBRARIES})
 
 
@@ -67,42 +71,3 @@ if (MSVC)
         set_property(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR} PROPERTY VS_STARTUP_PROJECT Marbled)
     endif ()
 endif ()
-
-### Submodules:
-#
-## Cotire
-#set (CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/CMake")
-#include(cotire)
-#
-## GLFW Library
-#add_subdirectory(Marble/vendor/GLFW)
-#set(glfw3_DIR "cmake-build-debug/Marble/vendor/GLFW/src/")
-#set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
-#set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
-#set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
-#find_package(glfw3 3.1.2 REQUIRED)
-#
-### Project
-#include_directories(
-#        Marble/src
-#        Marble/vendor/spdlog/include
-#        Sandbox/src
-#        Marble/vendor/GLFW/include)
-#
-#add_executable(
-#        Marble
-#        Sandbox/src/Sandbox.cpp
-#        Marble/src/Marble/Core.h Marble/src/Marble/Application.cpp
-#        Marble/src/Marble/Application.h Marble/src/Marble.h
-#        Marble/src/Marble/EntryPoint.h
-#        Marble/src/Marble/Log.h
-#        Marble/src/Marble/Log.cpp
-#        Marble/src/Marble/Events/ApplicationEvent.h Marble/src/Marble/Events/Event.h
-#        Marble/src/Marble/Events/KeyEvent.h Marble/src/Marble/Events/MouseEvent.h)
-#
-### Library links
-#target_link_libraries(Marble glfw)
-#
-### Handles precompiled headers
-#set_target_properties(Marble PROPERTIES COTIRE_CXX_PREFIX_HEADER_INIT "Marble/src/ptpch.h")
-#cotire(Marble)
