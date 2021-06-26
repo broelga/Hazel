@@ -27,9 +27,9 @@ namespace Marble {
         unsigned int m_Width, m_Height;
     };
 
-    class MRBL_API WindowClosedEvent : public Event {
+    class MRBL_API WindowCloseEvent : public Event {
     public:
-        WindowClosedEvent() {}
+        WindowCloseEvent() {}
 
         EVENT_CLASS_TYPE(WindowClose)
 

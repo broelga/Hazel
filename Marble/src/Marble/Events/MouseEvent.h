@@ -24,8 +24,7 @@ namespace Marble {
         EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
 
     private:
-        m_MouseX,
-        m_MouseY;
+        float m_MouseX, m_MouseY;
     };
 
     class MRBL_API MouseScrolledEvent : public Event {
@@ -39,7 +38,7 @@ namespace Marble {
 
         std::string ToString() const override {
             std::stringstream ss;
-            ss << "MouseScrolledEvent: " << GetXOffset << ", " << GetYOffset;
+            ss << "MouseScrolledEvent: " << GetXOffset() << ", " << GetYOffset();
             return ss.str();
         }
 
