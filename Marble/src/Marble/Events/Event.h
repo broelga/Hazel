@@ -44,6 +44,8 @@ namespace Marble {
 
         virtual std::string ToString() const { return GetName(); }
 
+        inline bool Handled() const { return m_Handled; }
+
         inline bool isInCategory(EventCategory category) { return GetCategoryFlags() & category; }
 
     protected:

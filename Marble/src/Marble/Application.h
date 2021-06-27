@@ -1,10 +1,13 @@
 #pragma once
 
-#include <Marble/Events/ApplicationEvent.h>
 #include "Core.h"
-#include "Events/Event.h"
-#include "Window.h"
 
+#include "Window.h"
+#include "Marble/LayerStack.h"
+#include "Marble/Events/Event.h"
+#include "Marble/Events/ApplicationEvent.h"
+
+// GLFW: Silence depreciation warning
 #define GL_SILENCE_DEPRECATION
 
 namespace Marble {
@@ -16,12 +19,15 @@ namespace Marble {
 
         void Run();
 
-        void OnEvent(Event& e);
+        void OnEvent(Event &e);
+        void PushLayer(Layer *layer);
+        void PushOverlay(Layer *overlay);
     private:
-        bool OnWindowClose(WindowCloseEvent& e);
+        bool OnWindowClose(WindowCloseEvent &e);
 
         std::unique_ptr<Window> m_Window;
         bool m_Running = true;
+        LayerStack m_LayerStack;
     };
 
 // To be defined by CLIENT

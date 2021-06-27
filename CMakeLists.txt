@@ -49,7 +49,7 @@ add_executable(Marbled
         Marble/src/Marble/Log.h
         Marble/src/Marble/Log.cpp
         Marble/src/Marble/Events/ApplicationEvent.h Marble/src/Marble/Events/Event.h
-        Marble/src/Marble/Events/KeyEvent.h Marble/src/Marble/Events/MouseEvent.h Marble/src/Marble/Window.h Marble/Platform/OSX/MacWindow.cpp Marble/Platform/OSX/MacWindow.h)
+        Marble/src/Marble/Events/KeyEvent.h Marble/src/Marble/Events/MouseEvent.h Marble/src/Marble/Window.h Marble/Platform/OSX/MacWindow.cpp Marble/Platform/OSX/MacWindow.h Marble/src/Marble/Layer.cpp Marble/src/Marble/Layer.h Marble/src/Marble/LayerStack.cpp Marble/src/Marble/LayerStack.h)
 
 ## Links
 target_link_libraries(Marbled "-framework OpenGL")
