@@ -39,10 +39,10 @@ include_directories(
 
 add_executable(${EXE_NAME} ${SOURCES})
 
-# Cotire (Handles precompiling)
+# Cotire (Handles precompilation of headers)
 set(CMAKE_MODULE_PATH "${CMAKE_SOURCE_DIR}/CMake")
-include(cotire)
 set_target_properties(${EXE_NAME} PROPERTIES COTIRE_CXX_PREFIX_HEADER_INIT "${SRC_DIR}/mrblpch.h")
+include(cotire)
 cotire(${EXE_NAME})
 
 # GLFW
