@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.19)
-set(PROJECT_NAME Marble)
 set(CMAKE_CXX_STANDARD 17)
+set(PROJECT_NAME Marble)
 project(${PROJECT_NAME})
 
 # EXE_NAME is need for debug compiling. Rename if desired.
