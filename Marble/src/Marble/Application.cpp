@@ -39,7 +39,7 @@ namespace Marble {
 
     void Application::Run() {
         while (m_Running) {
-            glClearColor(1, 0.5, 0, 0.5);
+            glClearColor(1, 0.5, 0, 1);
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
             for (Layer *layer : m_LayerStack) {
