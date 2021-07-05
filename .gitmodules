@@ -1,3 +1,6 @@
 [submodule "Marble/vendors/imgui"]
 	path = Marble/vendors/imgui
 	url = https://github.com/broelga/imgui
+[submodule "Kono/vendor/imgui"]
+	path = Kono/vendor/imgui
+	url = https://github.com/broelga/imgui

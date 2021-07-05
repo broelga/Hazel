@@ -1,22 +1,22 @@
-#include <Marble.h>
+#include <Kono.h>
 
-class ExampleLayer : public Marble::Layer {
+class ExampleLayer : public Kono::Layer {
 public:
     ExampleLayer()
             : Layer("Example") {}
 
     void OnUpdate() override {
-        MRBL_INFO("ExampleLayer::Update");
+        KN_INFO("ExampleLayer::Update");
     }
 
-    void OnEvent(Marble::Event &event) override {
-        MRBL_TRACE("{0}", event);
+    void OnEvent(Kono::Event &event) override {
+        KN_TRACE("{0}", event);
     }
 };
 
 
-namespace Marble {
-    class Sandbox : public Marble::Application {
+namespace Kono {
+    class Sandbox : public Kono::Application {
     public:
         Sandbox() {
             PushLayer(new ExampleLayer());
@@ -25,7 +25,7 @@ namespace Marble {
         ~Sandbox() {}
     };
 
-    Marble::Application *CreateApplication() {
+    Kono::Application *CreateApplication() {
         return new Sandbox();
     }
 }
