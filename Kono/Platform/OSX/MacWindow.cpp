@@ -1,5 +1,5 @@
-#include <Kono/Log.h>
 #include "knpch.h"
+#include "Kono/Log.h"
 #include "MacWindow.h"
 
 #include "Kono/Events/ApplicationEvent.h"
@@ -15,17 +15,11 @@ namespace Kono {
         KN_CORE_ERROR("GLFW Error ({0}): {1}", error, description);
     }
 
-    Window *Window::Create(const WindowProps &props) {
-        return new MacWindow(props);
-    }
+    Window *Window::Create(const WindowProps &props) { return new MacWindow(props); }
 
-    MacWindow::MacWindow(const WindowProps &props) {
-        Init(props);
-    }
+    MacWindow::MacWindow(const WindowProps &props) { Init(props); }
 
-    MacWindow::~MacWindow() {
-        Shutdown();
-    }
+    MacWindow::~MacWindow() { Shutdown(); }
 
     void MacWindow::Init(const WindowProps &props) {
         m_Data.Title = props.Title;
@@ -38,16 +32,28 @@ namespace Kono {
             //TODO: glfwTerminate on system shutdown
             int success = glfwInit();
             KN_CORE_ASSERT(success, "Could not initialize GLFW!");
+
+            glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+            glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+            glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
+            glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+
+
             glfwSetErrorCallback(GLFWErrorCallback);
 
             s_GLFWInitialized = true;
         }
 
-        m_Window = glfwCreateWindow((int) props.Width, (int) props.Height, m_Data.Title.c_str(), nullptr, nullptr);
+        m_Window = glfwCreateWindow(static_cast<int>(m_Data.Width),
+                                    static_cast<int>(m_Data.Height),
+                                    m_Data.Title.c_str(), nullptr, nullptr);
+
         glfwMakeContextCurrent(m_Window);
+        glfwSetWindowUserPointer(m_Window, &m_Data);
+
         int status = gladLoadGLLoader((GLADloadproc) glfwGetProcAddress);
         KN_CORE_ASSERT(status, "Failed to initialize Glad!");
-        glfwSetWindowUserPointer(m_Window, &m_Data);
+
         SetVSync(true);
 
         //Set GLFW callbacks
@@ -121,9 +127,7 @@ namespace Kono {
 
     }
 
-    void MacWindow::Shutdown() {
-        glfwDestroyWindow(m_Window);
-    }
+    void MacWindow::Shutdown() { glfwDestroyWindow(m_Window); }
 
     void MacWindow::OnUpdate() {
         glfwPollEvents();
@@ -140,7 +144,5 @@ namespace Kono {
         m_Data.VSync = enabled;
     }
 
-    bool MacWindow::IsVSync() const {
-        return m_Data.VSync;
-    }
+    bool MacWindow::IsVSync() const { return m_Data.VSync; }
 }

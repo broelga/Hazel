@@ -6,6 +6,8 @@
 #include "Kono/Layer.h"
 #include "Kono/Log.h"
 
+#include "Kono/ImGui/ImGuiLayer.h"
+
 // ---Entry Point--------------------------
 #include "Kono/EntryPoint.h"
 // ----------------------------------------

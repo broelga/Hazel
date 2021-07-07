@@ -4,7 +4,7 @@
 
 namespace Kono {
 
-    class ImGuiLayer : public Layer {
+    class KN_API ImGuiLayer : public Layer {
     public:
         ImGuiLayer();
         ~ImGuiLayer();
@@ -14,5 +14,6 @@ namespace Kono {
         void OnUpdate();
         void OnEvent(Event &event);
     private:
+        float m_Time = 0.0f;
     };
 }
