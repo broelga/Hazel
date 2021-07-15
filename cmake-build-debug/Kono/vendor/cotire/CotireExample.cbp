@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="CotireExample"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="clang"/>
+		<Option virtualFolders="CMake Files\;CMake Files\Kono\;CMake Files\Kono\vendor\;CMake Files\Kono\vendor\cotire\;CMake Files\Kono\vendor\cotire\src\;CMake Files\Kono\vendor\cotire\CMake\;CMake Files\Kono\vendor\Glad\;CMake Files\Kono\vendor\spdlog\;CMake Files\Kono\vendor\spdlog\cmake\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\usr\;CMake Files\..\..\..\..\usr\local\;CMake Files\..\..\..\..\usr\local\lib\;CMake Files\..\..\..\..\usr\local\lib\cmake\;CMake Files\..\..\..\..\usr\local\lib\cmake\glfw3\;CMake Files\cmake-build-debug\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/ibroel/dev/Kono/cmake-build-debug/Kono/vendor/cotire"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/ibroel/dev/Kono/cmake-build-debug/Kono/vendor/cotire/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/ibroel/dev/Kono/cmake-build-debug/Kono/vendor/cotire/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/ibroel/dev/Kono/cmake-build-debug/Kono/vendor/cotire/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/ibroel/dev/Kono/cmake-build-debug/Kono/vendor/cotire/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/ibroel/dev/Kono/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/Users/ibroel/dev/Kono/Kono/vendor/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\Kono\vendor\"/>
+		</Unit>
+		<Unit filename="/Users/ibroel/dev/Kono/Kono/vendor/cotire/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\Kono\vendor\cotire\"/>
+		</Unit>
+		<Unit filename="/Users/ibroel/dev/Kono/Kono/vendor/cotire/src/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\Kono\vendor\cotire\src\"/>
+		</Unit>
+		<Unit filename="/Users/ibroel/dev/Kono/Kono/vendor/cotire/CMake/cotire.cmake">
+			<Option virtualFolder="CMake Files\Kono\vendor\cotire\CMake\"/>
+		</Unit>
+		<Unit filename="/Users/ibroel/dev/Kono/Kono/vendor/Glad/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\Kono\vendor\Glad\"/>
+		</Unit>
+		<Unit filename="/Users/ibroel/dev/Kono/Kono/vendor/spdlog/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\Kono\vendor\spdlog\"/>
+		</Unit>
+		<Unit filename="/Users/ibroel/dev/Kono/Kono/vendor/spdlog/cmake/ide.cmake">
+			<Option virtualFolder="CMake Files\Kono\vendor\spdlog\cmake\"/>
+		</Unit>
+		<Unit filename="/Users/ibroel/dev/Kono/Kono/vendor/spdlog/cmake/utils.cmake">
+			<Option virtualFolder="CMake Files\Kono\vendor\spdlog\cmake\"/>
+		</Unit>
+		<Unit filename="/Users/ibroel/dev/Kono/../../../../usr/local/lib/cmake/glfw3/glfw3Config.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\lib\cmake\glfw3\"/>
+		</Unit>
+		<Unit filename="/Users/ibroel/dev/Kono/../../../../usr/local/lib/cmake/glfw3/glfw3ConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\lib\cmake\glfw3\"/>
+		</Unit>
+		<Unit filename="/Users/ibroel/dev/Kono/../../../../usr/local/lib/cmake/glfw3/glfw3Targets-release.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\lib\cmake\glfw3\"/>
+		</Unit>
+		<Unit filename="/Users/ibroel/dev/Kono/../../../../usr/local/lib/cmake/glfw3/glfw3Targets.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\usr\local\lib\cmake\glfw3\"/>
+		</Unit>
+		<Unit filename="/Users/ibroel/dev/Kono/cmake-build-debug/Kono_app_CXX_cotire.cmake">
+			<Option virtualFolder="CMake Files\cmake-build-debug\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
