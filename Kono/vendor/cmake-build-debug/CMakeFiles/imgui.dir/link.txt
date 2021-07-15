@@ -1,0 +1,2 @@
+/Library/Developer/CommandLineTools/usr/bin/ar qc libimgui.a CMakeFiles/imgui.dir/imgui/imgui_draw.o CMakeFiles/imgui.dir/imgui/imgui.o CMakeFiles/imgui.dir/imgui/imgui_demo.o CMakeFiles/imgui.dir/imgui/backends/imgui_impl_glfw.o
+/Library/Developer/CommandLineTools/usr/bin/ranlib libimgui.a

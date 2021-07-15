@@ -1,0 +1,4 @@
+# Hashes of file build rules.
+b8c8601712a5546b15cfaf6555de42db cotire/Kono_app_CXX_prefix.cxx
+2d1c0dbe20e897a6b32542ab46ebdf5a cotire/Kono_app_CXX_prefix.hxx
+d3ca5a81a10b7f9fbf39edb1b9f17b03 cotire/Kono_app_CXX_prefix.hxx.pch
