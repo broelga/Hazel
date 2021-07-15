@@ -50,6 +50,8 @@ set(PROJECT_SOURCES
 
         "${KONO_SRC_DIR}/Kono/Platform/OSX/MacWindow.h"
         "${KONO_SRC_DIR}/Kono/Platform/OSX/MacWindow.cpp"
+        "${KONO_SRC_DIR}/Kono/OpenGL/ImGuiOpenGLRenderer.cpp"
+        "${KONO_SRC_DIR}/Kono/OpenGL/ImGuiOpenGLRenderer.h"
         )
 
 set(VENDOR_SOURCES
@@ -61,8 +63,6 @@ set(VENDOR_SOURCES
         "${IMGUI_DIR}/imgui_widgets.cpp"
         "${IMGUI_DIR}/imgui_tables.cpp"
         "${IMGUI_DIR}/imgui_demo.cpp"
-        "${IMGUI_DIR}/backends/imgui_impl_glfw.cpp"
-        "${IMGUI_DIR}/backends/imgui_impl_opengl3.cpp"
         )
 
 # -----------------------------------------------------------------
