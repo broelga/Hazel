@@ -36,4 +36,4 @@
 ehthumbs.db
 Thumbs.db
 .idea
-cmake-build-debug
+cmake-*
