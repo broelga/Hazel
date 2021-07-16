@@ -7,7 +7,7 @@
 
 namespace Kono {
 
-    class KN_API LayerStack {
+    class LayerStack {
     public:
         LayerStack();
         ~LayerStack();

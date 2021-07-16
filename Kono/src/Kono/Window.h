@@ -1,4 +1,5 @@
 #pragma once
+
 #include "Kono/Core.h"
 #include "Kono/Events/Event.h"
 #include "knpch.h"
@@ -16,9 +17,9 @@ namespace Kono {
     };
 
     // Interface representing a desktop system based Window
-    class KN_API Window {
+    class Window {
     public:
-        using EventCallbackFn = std::function<void(Event &)>;
+        using EventCallbackFn = std::function<void(Event & )>;
 
         virtual ~Window() {}
 

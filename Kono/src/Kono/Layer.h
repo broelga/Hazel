@@ -4,7 +4,8 @@
 #include "Kono/Events/Event.h"
 
 namespace Kono {
-    class KN_API Layer {
+
+    class Layer {
     public:
         Layer(const std::string &name = "Layer");
         virtual ~Layer();

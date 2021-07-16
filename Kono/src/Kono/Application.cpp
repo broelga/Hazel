@@ -1,7 +1,6 @@
 #include "knpch.h"
 #include "Application.h"
 
-
 #include "Kono/Log.h"
 
 #include <glad/glad.h>
@@ -12,7 +11,7 @@ namespace Kono {
 
 #define BIND_EVENT_FN(x) (std::bind(&Application::x, this, std::placeholders::_1))
 
-    Application* Application::s_Instance = nullptr;
+    Application *Application::s_Instance = nullptr;
 
     Application::Application() {
 
@@ -24,17 +23,17 @@ namespace Kono {
 
     Application::~Application() {}
 
-    void Application::PushLayer(Layer *layer) {
+    void Application::PushLayer(Layer * layer) {
         m_LayerStack.PushLayer(layer);
         layer->OnAttach();
     }
 
-    void Application::PushOverlay(Layer *layer) {
+    void Application::PushOverlay(Layer * layer) {
         m_LayerStack.PushOverlay(layer);
         layer->OnAttach();
     }
 
-    void Application::OnEvent(Event &e) {
+    void Application::OnEvent(Event & e) {
         EventDispatcher dispatcher(e);
         dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
 
