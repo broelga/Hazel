@@ -50,9 +50,11 @@ set(PROJECT_SOURCES
 
         "${KONO_SRC_DIR}/Kono/Platform/OSX/MacWindow.h"
         "${KONO_SRC_DIR}/Kono/Platform/OSX/MacWindow.cpp"
-        "${KONO_SRC_DIR}/Kono/OpenGL/ImGuiOpenGLRenderer.cpp"
-        "${KONO_SRC_DIR}/Kono/OpenGL/ImGuiOpenGLRenderer.h"
-        )
+        "${KONO_SRC_DIR}/Kono/Platform/OpenGL/ImGuiOpenGLRenderer.cpp"
+        "${KONO_SRC_DIR}/Kono/Platform/OpenGL/ImGuiOpenGLRenderer.cpp"
+        "${KONO_SRC_DIR}/Kono/Platform/GLFW/ImGuiGLFWRenderer.h"
+        "${KONO_SRC_DIR}/Kono/Platform/GLFW/ImGuiGLFWRenderer.h"
+        Kono/src/Kono/Input.h Kono/src/Kono/Platform/OSX/MacInput.cpp Kono/src/Kono/Platform/OSX/MacInput.h)
 
 set(VENDOR_SOURCES
         "${SPDLOG_DIR}/include/spdlog/spdlog.h" # For logging

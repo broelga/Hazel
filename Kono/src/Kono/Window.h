@@ -1,6 +1,4 @@
 #pragma once
-
-
 #include "Kono/Core.h"
 #include "Kono/Events/Event.h"
 #include "knpch.h"
