@@ -1,41 +1,38 @@
 #include "knpch.h"
 #include "Application.h"
 
+#include "Core.h"
 #include "Kono/Log.h"
 
 #include <glad/glad.h>
 
-#include "Input.h"
-
 namespace Kono {
 
-#define BIND_EVENT_FN(x) (std::bind(&Application::x, this, std::placeholders::_1))
-
-    Application *Application::s_Instance = nullptr;
+    Application* Application::s_Instance = nullptr;
 
     Application::Application() {
 
         KN_CORE_ASSERT(!s_Instance, "Application already exists!");
         s_Instance = this;
         m_Window = std::unique_ptr<Window>(Window::Create());
-        m_Window->SetEventCallback(BIND_EVENT_FN(OnEvent));
+        m_Window->SetEventCallback(KN_BIND_EVENT_FN(Application::OnEvent));
     }
 
     Application::~Application() {}
 
-    void Application::PushLayer(Layer * layer) {
+    void Application::PushLayer(Layer *layer) {
         m_LayerStack.PushLayer(layer);
         layer->OnAttach();
     }
 
-    void Application::PushOverlay(Layer * layer) {
+    void Application::PushOverlay(Layer *layer) {
         m_LayerStack.PushOverlay(layer);
         layer->OnAttach();
     }
 
-    void Application::OnEvent(Event & e) {
+    void Application::OnEvent(Event &e) {
         EventDispatcher dispatcher(e);
-        dispatcher.Dispatch<WindowCloseEvent>(BIND_EVENT_FN(OnWindowClose));
+        dispatcher.Dispatch<WindowCloseEvent>(KN_BIND_EVENT_FN(Application::OnWindowClose));
 
         for (auto it = m_LayerStack.end(); it != m_LayerStack.begin();) {
             (*--it)->OnEvent(e);
@@ -53,9 +50,6 @@ namespace Kono {
             for (Layer *layer : m_LayerStack) {
                 layer->OnUpdate();
             }
-
-            auto[x, y] = Input::GetMousePosition();
-            KN_TRACE("{0}, {1}", x, y);
 
             m_Window->OnUpdate();
         }

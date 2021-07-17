@@ -4,6 +4,19 @@
 
 namespace Kono {
 
+    class MouseEvent : public Event {
+    public:
+        inline int GetMouseCode() const { return m_MouseCode; }
+
+        EVENT_CLASS_CATEGORY(EventCategoryMouse | EventCategoryInput)
+
+    protected:
+        MouseEvent(int mouseCode)
+                : m_MouseCode(mouseCode) {}
+
+        int m_MouseCode;
+    };
+
     class MouseMovedEvent : public Event {
     public:
         MouseMovedEvent(float x, float y)

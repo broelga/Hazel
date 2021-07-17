@@ -20,6 +20,7 @@ set(SPDLOG_DIR "${VENDOR_DIR}/spdlog")
 set(GLAD_DIR "${VENDOR_DIR}/Glad")
 set(GLFW_DIR "${VENDOR_DIR}/GLFW")
 set(IMGUI_DIR "${VENDOR_DIR}/imgui")
+set(GLM_DIR "${VENDOR_DIR}/glm")
 
 # -----------------------------------------------------------------
 # Project
@@ -32,6 +33,7 @@ set(PROJECT_SOURCES
         "${KONO_SRC_DIR}/Kono/Application.cpp"
         "${KONO_SRC_DIR}/Kono/Core.h"
         "${KONO_SRC_DIR}/Kono/EntryPoint.h"
+        "${KONO_SRC_DIR}/Kono/Input.h"
         "${KONO_SRC_DIR}/Kono/Layer.h"
         "${KONO_SRC_DIR}/Kono/Layer.cpp"
         "${KONO_SRC_DIR}/Kono/Log.h"
@@ -50,11 +52,13 @@ set(PROJECT_SOURCES
 
         "${KONO_SRC_DIR}/Kono/Platform/OSX/MacWindow.h"
         "${KONO_SRC_DIR}/Kono/Platform/OSX/MacWindow.cpp"
+        "${KONO_SRC_DIR}/Kono/Platform/OSX/MacInput.cpp"
+        "${KONO_SRC_DIR}/Kono/Platform/OSX/MacInput.h"
         "${KONO_SRC_DIR}/Kono/Platform/OpenGL/ImGuiOpenGLRenderer.cpp"
         "${KONO_SRC_DIR}/Kono/Platform/OpenGL/ImGuiOpenGLRenderer.cpp"
         "${KONO_SRC_DIR}/Kono/Platform/GLFW/ImGuiGLFWRenderer.h"
         "${KONO_SRC_DIR}/Kono/Platform/GLFW/ImGuiGLFWRenderer.h"
-        Kono/src/Kono/Input.h Kono/src/Kono/Platform/OSX/MacInput.cpp Kono/src/Kono/Platform/OSX/MacInput.h)
+        Kono/src/Kono/KeyCodes.h Kono/src/Kono/MouseButtonCodes.h)
 
 set(VENDOR_SOURCES
         "${SPDLOG_DIR}/include/spdlog/spdlog.h" # For logging
@@ -83,12 +87,14 @@ target_include_directories(${TARGET_NAME} PUBLIC
 find_package(glfw3 3.3 REQUIRED)
 add_subdirectory(${SPDLOG_DIR})
 add_subdirectory(${GLAD_DIR})
+add_subdirectory(${GLM_DIR})
 add_subdirectory(${VENDOR_DIR}) # For GLFW/ImGui
 
 target_link_libraries(${TARGET_NAME} PUBLIC
         "spdlog"
-        "glfw"
         "Glad"
+        "glfw"
+        "glm"
         "imgui"
         )
 

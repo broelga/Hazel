@@ -6,10 +6,10 @@
 #include "Kono/Platform/GLFW/ImGuiGLFWRenderer.h"
 
 #include "Kono/Application.h"
+#include "Kono/KeyCodes.h"
 
 // TEMPORARY
 #include <glad/glad.h>
-#include <GLFW/glfw3.h>
 
 namespace Kono {
 
@@ -27,36 +27,33 @@ namespace Kono {
         io.BackendFlags |= ImGuiBackendFlags_HasSetMousePos;
 
         // TEMPORARY: should eventually use Kono key codes
-        io.KeyMap[ImGuiKey_Tab] = GLFW_KEY_TAB;
-        io.KeyMap[ImGuiKey_LeftArrow] = GLFW_KEY_LEFT;
-        io.KeyMap[ImGuiKey_RightArrow] = GLFW_KEY_RIGHT;
-        io.KeyMap[ImGuiKey_UpArrow] = GLFW_KEY_UP;
-        io.KeyMap[ImGuiKey_DownArrow] = GLFW_KEY_DOWN;
-        io.KeyMap[ImGuiKey_PageUp] = GLFW_KEY_PAGE_UP;
-        io.KeyMap[ImGuiKey_PageDown] = GLFW_KEY_PAGE_DOWN;
-        io.KeyMap[ImGuiKey_Home] = GLFW_KEY_HOME;
-        io.KeyMap[ImGuiKey_End] = GLFW_KEY_END;
-        io.KeyMap[ImGuiKey_Insert] = GLFW_KEY_INSERT;
-        io.KeyMap[ImGuiKey_Delete] = GLFW_KEY_DELETE;
-        io.KeyMap[ImGuiKey_Backspace] = GLFW_KEY_BACKSPACE;
-        io.KeyMap[ImGuiKey_Space] = GLFW_KEY_SPACE;
-        io.KeyMap[ImGuiKey_Enter] = GLFW_KEY_ENTER;
-        io.KeyMap[ImGuiKey_Escape] = GLFW_KEY_ESCAPE;
-        io.KeyMap[ImGuiKey_KeyPadEnter] = GLFW_KEY_KP_ENTER;
-        io.KeyMap[ImGuiKey_A] = GLFW_KEY_A;
-        io.KeyMap[ImGuiKey_C] = GLFW_KEY_C;
-        io.KeyMap[ImGuiKey_V] = GLFW_KEY_V;
-        io.KeyMap[ImGuiKey_X] = GLFW_KEY_X;
-        io.KeyMap[ImGuiKey_Y] = GLFW_KEY_Y;
-        io.KeyMap[ImGuiKey_Z] = GLFW_KEY_Z;
+        io.KeyMap[ImGuiKey_Tab] = KN_KEY_TAB;
+        io.KeyMap[ImGuiKey_LeftArrow] = KN_KEY_LEFT;
+        io.KeyMap[ImGuiKey_RightArrow] = KN_KEY_RIGHT;
+        io.KeyMap[ImGuiKey_UpArrow] = KN_KEY_UP;
+        io.KeyMap[ImGuiKey_DownArrow] = KN_KEY_DOWN;
+        io.KeyMap[ImGuiKey_PageUp] = KN_KEY_PAGE_UP;
+        io.KeyMap[ImGuiKey_PageDown] = KN_KEY_PAGE_DOWN;
+        io.KeyMap[ImGuiKey_Home] = KN_KEY_HOME;
+        io.KeyMap[ImGuiKey_End] = KN_KEY_END;
+        io.KeyMap[ImGuiKey_Insert] = KN_KEY_INSERT;
+        io.KeyMap[ImGuiKey_Delete] = KN_KEY_DELETE;
+        io.KeyMap[ImGuiKey_Backspace] = KN_KEY_BACKSPACE;
+        io.KeyMap[ImGuiKey_Space] = KN_KEY_SPACE;
+        io.KeyMap[ImGuiKey_Enter] = KN_KEY_ENTER;
+        io.KeyMap[ImGuiKey_Escape] = KN_KEY_ESCAPE;
+        io.KeyMap[ImGuiKey_KeyPadEnter] = KN_KEY_KP_ENTER;
+        io.KeyMap[ImGuiKey_A] = KN_KEY_A;
+        io.KeyMap[ImGuiKey_C] = KN_KEY_C;
+        io.KeyMap[ImGuiKey_V] = KN_KEY_V;
+        io.KeyMap[ImGuiKey_X] = KN_KEY_X;
+        io.KeyMap[ImGuiKey_Y] = KN_KEY_Y;
+        io.KeyMap[ImGuiKey_Z] = KN_KEY_Z;
 
         Application &app = Application::Get();
         GLFWwindow *window = static_cast<GLFWwindow *>(app.GetWindow().GetNativeWindow());
 
-//        io.SetClipboardTextFn = ImGui::SetClipboardText(window, /*text*/); // How do you get text to set clipboard??
-//        io.GetClipboardTextFn = ImGui_ImplGLFW_GetClipboardText;
-//        io.ClipboardUserData = window;
-
+        io.ClipboardUserData = window;
         ImGui_ImplOpenGL3_Init("#version 410 core");
     }
 
@@ -68,7 +65,7 @@ namespace Kono {
         Application &app = Application::Get();
         io.DisplaySize = ImVec2(app.GetWindow().GetWidth(), app.GetWindow().GetHeight());
 
-        float time = static_cast<float>(glfwGetTime());
+        float time = static_cast<float>(ImGui::GetTime());
         io.DeltaTime = m_Time > 0.0f ? (time - m_Time) : (1.0f / 60.0f);
         m_Time = time;
 
@@ -128,10 +125,10 @@ namespace Kono {
         io.KeysDown[e.GetKeyCode()] = true;
 
         // Check if key modifiers are pressed
-        io.KeyCtrl = io.KeysDown[GLFW_KEY_LEFT_CONTROL] || io.KeysDown[GLFW_KEY_RIGHT_CONTROL];
-        io.KeyShift = io.KeysDown[GLFW_KEY_LEFT_SHIFT] || io.KeysDown[GLFW_KEY_RIGHT_SHIFT];
-        io.KeyAlt = io.KeysDown[GLFW_KEY_LEFT_ALT] || io.KeysDown[GLFW_KEY_RIGHT_ALT];
-        io.KeySuper = io.KeysDown[GLFW_KEY_LEFT_SUPER] || io.KeysDown[GLFW_KEY_RIGHT_SUPER];
+        io.KeyCtrl = io.KeysDown[KN_KEY_LEFT_CONTROL] || io.KeysDown[KN_KEY_RIGHT_CONTROL];
+        io.KeyShift = io.KeysDown[KN_KEY_LEFT_SHIFT] || io.KeysDown[KN_KEY_RIGHT_SHIFT];
+        io.KeyAlt = io.KeysDown[KN_KEY_LEFT_ALT] || io.KeysDown[KN_KEY_RIGHT_ALT];
+        io.KeySuper = io.KeysDown[KN_KEY_LEFT_SUPER] || io.KeysDown[KN_KEY_RIGHT_SUPER];
 
         // TODO: Implement copy and paste -- see: OnAttach()
 
