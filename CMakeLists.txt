@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.19)
 set(PROJECT_NAME Kono)
+set(TARGET_NAME "Sandbox")
 project(${PROJECT_NAME})
 
 set(CMAKE_CXX_STANDARD 17)
@@ -8,9 +9,6 @@ set(CMAKE_VERBOSE_MAKEFILE 0) # Enable for more verbose CMake output
 # -----------------------------------------------------------------
 # Variables
 # -----------------------------------------------------------------
-# Project
-set(TARGET_NAME "Sandbox")
-
 # Application
 set(KONO_SRC_DIR "Kono/src")
 set(VENDOR_DIR "Kono/vendor")
@@ -47,6 +45,7 @@ set(PROJECT_SOURCES
         "${KONO_SRC_DIR}/Kono/Events/KeyEvent.h"
         "${KONO_SRC_DIR}/Kono/Events/MouseEvent.h"
 
+        "${KONO_SRC_DIR}/Kono/ImGui/ImGuiBuild.cpp"
         "${KONO_SRC_DIR}/Kono/ImGui/ImGuiLayer.h"
         "${KONO_SRC_DIR}/Kono/ImGui/ImGuiLayer.cpp"
 
@@ -54,11 +53,10 @@ set(PROJECT_SOURCES
         "${KONO_SRC_DIR}/Kono/Platform/OSX/MacWindow.cpp"
         "${KONO_SRC_DIR}/Kono/Platform/OSX/MacInput.cpp"
         "${KONO_SRC_DIR}/Kono/Platform/OSX/MacInput.h"
-        "${KONO_SRC_DIR}/Kono/Platform/OpenGL/ImGuiOpenGLRenderer.cpp"
-        "${KONO_SRC_DIR}/Kono/Platform/OpenGL/ImGuiOpenGLRenderer.cpp"
-        "${KONO_SRC_DIR}/Kono/Platform/GLFW/ImGuiGLFWRenderer.h"
-        "${KONO_SRC_DIR}/Kono/Platform/GLFW/ImGuiGLFWRenderer.h"
-        Kono/src/Kono/KeyCodes.h Kono/src/Kono/MouseButtonCodes.h)
+
+        "${KONO_SRC_DIR}/Kono/KeyCodes.h"
+        "${KONO_SRC_DIR}/Kono/MouseButtonCodes.h"
+        )
 
 set(VENDOR_SOURCES
         "${SPDLOG_DIR}/include/spdlog/spdlog.h" # For logging

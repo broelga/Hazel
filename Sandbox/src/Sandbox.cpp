@@ -1,5 +1,7 @@
 #include <Kono.h>
 
+#include "imgui/imgui.h"
+
 class ExampleLayer : public Kono::Layer {
 public:
     ExampleLayer()
@@ -14,6 +16,12 @@ public:
         if (Kono::Input::IsMouseButtonPressed(KN_MOUSE_BUTTON_RIGHT)) {
             KN_TRACE("Right mouse button is pressed (poll)!");
         }
+    }
+
+    virtual void OnImGuiRender() override {
+        ImGui::Begin("Test");
+        ImGui::Text("Hello World!");
+        ImGui::End();
     }
 
     void OnEvent(Kono::Event &event) override {
@@ -40,12 +48,10 @@ public:
     }
 };
 
-
 class Sandbox : public Kono::Application {
 public:
     Sandbox() {
         PushLayer(new ExampleLayer());
-        PushOverlay(new Kono::ImGuiLayer());
     }
 
     ~Sandbox() {}
