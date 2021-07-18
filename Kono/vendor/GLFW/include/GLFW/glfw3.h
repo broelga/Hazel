@@ -289,14 +289,14 @@ extern "C" {
  *  features are added to the API but it remains backward-compatible.
  *  @ingroup init
  */
-#define GLFW_VERSION_MINOR          4
+#define GLFW_VERSION_MINOR          3
 /*! @brief The revision number of the GLFW header.
  *
  *  The revision number of the GLFW header.  This is incremented when a bug fix
  *  release is made that does not contain any API changes.
  *  @ingroup init
  */
-#define GLFW_VERSION_REVISION       0
+#define GLFW_VERSION_REVISION       3
 /*! @} */
 
 /*! @brief One.
