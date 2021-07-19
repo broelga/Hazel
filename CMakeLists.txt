@@ -100,13 +100,5 @@ target_compile_definitions(${TARGET_NAME} PRIVATE "GLFW_INCLUDE_NONE") # Do not 
 
 target_precompile_headers(${TARGET_NAME} PRIVATE "${KONO_SRC_DIR}/knpch.h")
 
-if (APPLE)
-    # Silence OpenGL depreciation warning
-    if (NOT GL_SILENCE_DEPRECIATION)
-        add_compile_definitions(GL_SILENCE_DEPRECIATION)
-    endif ()
-    set(CMAKE_MACOSX_RPATH 1)
-endif ()
-
 
 
