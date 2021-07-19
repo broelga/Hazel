@@ -6,7 +6,10 @@
 #include "Kono/Events/MouseEvent.h"
 #include "Kono/Events/KeyEvent.h"
 
-#include <glad/glad.h>
+#include "Kono/Renderer/GraphicsContext.h"
+#include "Kono/Platform/OpenGL/OpenGLContext.h"
+
+#include <GLFW/glfw3.h>
 
 namespace Kono {
     static bool s_GLFWInitialized = false;
@@ -33,12 +36,10 @@ namespace Kono {
             int success = glfwInit();
             KN_CORE_ASSERT(success, "Could not initialize GLFW!");
 
-            glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
+            glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, true);
             glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
             glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
             glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
-
-
             glfwSetErrorCallback(GLFWErrorCallback);
 
             s_GLFWInitialized = true;
@@ -48,12 +49,10 @@ namespace Kono {
                                     static_cast<int>(m_Data.Height),
                                     m_Data.Title.c_str(), nullptr, nullptr);
 
-        glfwMakeContextCurrent(m_Window);
+        m_Context = new OpenGLContext(m_Window);
+        m_Context->Init();
+
         glfwSetWindowUserPointer(m_Window, &m_Data);
-
-        int status = gladLoadGLLoader((GLADloadproc) glfwGetProcAddress);
-        KN_CORE_ASSERT(status, "Failed to initialize Glad!");
-
         SetVSync(true);
 
         //Set GLFW callbacks
@@ -138,7 +137,7 @@ namespace Kono {
 
     void MacWindow::OnUpdate() {
         glfwPollEvents();
-        glfwSwapBuffers(m_Window);
+        m_Context->SwapBuffers();
     }
 
     void MacWindow::SetVSync(bool enabled) {

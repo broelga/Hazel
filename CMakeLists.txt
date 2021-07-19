@@ -39,6 +39,8 @@ set(PROJECT_SOURCES
         "${KONO_SRC_DIR}/Kono/LayerStack.cpp"
         "${KONO_SRC_DIR}/Kono/LayerStack.h"
         "${KONO_SRC_DIR}/Kono/Window.h"
+        "${KONO_SRC_DIR}/Kono/KeyCodes.h"
+        "${KONO_SRC_DIR}/Kono/MouseButtonCodes.h"
 
         "${KONO_SRC_DIR}/Kono/Events/ApplicationEvent.h"
         "${KONO_SRC_DIR}/Kono/Events/Event.h"
@@ -49,13 +51,14 @@ set(PROJECT_SOURCES
         "${KONO_SRC_DIR}/Kono/ImGui/ImGuiLayer.h"
         "${KONO_SRC_DIR}/Kono/ImGui/ImGuiLayer.cpp"
 
+        "${KONO_SRC_DIR}/Kono/Platform/OpenGL/OpenGLContext.h"
+        "${KONO_SRC_DIR}/Kono/Platform/OpenGL/OpenGLContext.cpp"
         "${KONO_SRC_DIR}/Kono/Platform/OSX/MacWindow.h"
         "${KONO_SRC_DIR}/Kono/Platform/OSX/MacWindow.cpp"
         "${KONO_SRC_DIR}/Kono/Platform/OSX/MacInput.cpp"
         "${KONO_SRC_DIR}/Kono/Platform/OSX/MacInput.h"
 
-        "${KONO_SRC_DIR}/Kono/KeyCodes.h"
-        "${KONO_SRC_DIR}/Kono/MouseButtonCodes.h"
+        "${KONO_SRC_DIR}/Kono/Renderer/GraphicsContext.h"
         )
 
 set(VENDOR_SOURCES

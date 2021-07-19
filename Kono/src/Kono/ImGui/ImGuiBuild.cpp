@@ -1,5 +1,6 @@
 #include "knpch.h"
 
+// Silence OpenGL depreciation warnings - OSX only.
 #ifdef __APPLE__
 #define GL_SILENCE_DEPRECIATION
 #endif

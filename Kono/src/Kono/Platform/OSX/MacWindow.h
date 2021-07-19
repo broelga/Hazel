@@ -1,6 +1,8 @@
 #pragma once
 
 #include "Kono/Window.h"
+#include "Kono/Renderer/GraphicsContext.h"
+
 #include <GLFW/glfw3.h>
 
 namespace Kono {
@@ -28,6 +30,7 @@ namespace Kono {
         virtual void Shutdown();
     private:
         GLFWwindow *m_Window;
+        GraphicsContext* m_Context;
 
         struct WindowData {
             std::string Title;
