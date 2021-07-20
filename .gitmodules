@@ -1,6 +1,6 @@
-[submodule "Kono/vendors/imgui"]
-	path = Kono/vendors/imgui
+[submodule "Hazel/vendors/imgui"]
+	path = Hazel/vendors/imgui
 	url = https://github.com/broelga/imgui
-[submodule "Kono/vendor/glm"]
-	path = Kono/vendor/glm
+[submodule "Hazel/vendor/glm"]
+	path = Hazel/vendor/glm
 	url = https://github.com/g-truc/glm.git

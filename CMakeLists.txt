@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.19)
-set(PROJECT_NAME Kono)
-set(TARGET_NAME "Sandbox")
+set(PROJECT_NAME "Hazel")
+set(TARGET_NAME "SandboxHazel")
 project(${PROJECT_NAME})
 
 set(CMAKE_CXX_STANDARD 17)
@@ -10,8 +10,8 @@ set(CMAKE_VERBOSE_MAKEFILE 0) # Enable for more verbose CMake output
 # Variables
 # -----------------------------------------------------------------
 # Application
-set(KONO_SRC_DIR "Kono/src")
-set(VENDOR_DIR "Kono/vendor")
+set(HAZEL_SRC_DIR "Hazel/src")
+set(VENDOR_DIR "Hazel/vendor")
 
 # Vendor/Libraries
 set(SPDLOG_DIR "${VENDOR_DIR}/spdlog")
@@ -26,39 +26,39 @@ set(GLM_DIR "${VENDOR_DIR}/glm")
 set(PROJECT_SOURCES
         "Sandbox/src/Sandbox.cpp"
 
-        "${KONO_SRC_DIR}/Kono.h"
-        "${KONO_SRC_DIR}/Kono/Application.h"
-        "${KONO_SRC_DIR}/Kono/Application.cpp"
-        "${KONO_SRC_DIR}/Kono/Core.h"
-        "${KONO_SRC_DIR}/Kono/EntryPoint.h"
-        "${KONO_SRC_DIR}/Kono/Input.h"
-        "${KONO_SRC_DIR}/Kono/Layer.h"
-        "${KONO_SRC_DIR}/Kono/Layer.cpp"
-        "${KONO_SRC_DIR}/Kono/Log.h"
-        "${KONO_SRC_DIR}/Kono/Log.cpp"
-        "${KONO_SRC_DIR}/Kono/LayerStack.cpp"
-        "${KONO_SRC_DIR}/Kono/LayerStack.h"
-        "${KONO_SRC_DIR}/Kono/Window.h"
-        "${KONO_SRC_DIR}/Kono/KeyCodes.h"
-        "${KONO_SRC_DIR}/Kono/MouseButtonCodes.h"
+        "${HAZEL_SRC_DIR}/Hazel.h"
+        "${HAZEL_SRC_DIR}/Hazel/Application.h"
+        "${HAZEL_SRC_DIR}/Hazel/Application.cpp"
+        "${HAZEL_SRC_DIR}/Hazel/Core.h"
+        "${HAZEL_SRC_DIR}/Hazel/EntryPoint.h"
+        "${HAZEL_SRC_DIR}/Hazel/Input.h"
+        "${HAZEL_SRC_DIR}/Hazel/Layer.h"
+        "${HAZEL_SRC_DIR}/Hazel/Layer.cpp"
+        "${HAZEL_SRC_DIR}/Hazel/Log.h"
+        "${HAZEL_SRC_DIR}/Hazel/Log.cpp"
+        "${HAZEL_SRC_DIR}/Hazel/LayerStack.cpp"
+        "${HAZEL_SRC_DIR}/Hazel/LayerStack.h"
+        "${HAZEL_SRC_DIR}/Hazel/Window.h"
+        "${HAZEL_SRC_DIR}/Hazel/KeyCodes.h"
+        "${HAZEL_SRC_DIR}/Hazel/MouseButtonCodes.h"
 
-        "${KONO_SRC_DIR}/Kono/Events/ApplicationEvent.h"
-        "${KONO_SRC_DIR}/Kono/Events/Event.h"
-        "${KONO_SRC_DIR}/Kono/Events/KeyEvent.h"
-        "${KONO_SRC_DIR}/Kono/Events/MouseEvent.h"
+        "${HAZEL_SRC_DIR}/Hazel/Events/ApplicationEvent.h"
+        "${HAZEL_SRC_DIR}/Hazel/Events/Event.h"
+        "${HAZEL_SRC_DIR}/Hazel/Events/KeyEvent.h"
+        "${HAZEL_SRC_DIR}/Hazel/Events/MouseEvent.h"
 
-        "${KONO_SRC_DIR}/Kono/ImGui/ImGuiBuild.cpp"
-        "${KONO_SRC_DIR}/Kono/ImGui/ImGuiLayer.h"
-        "${KONO_SRC_DIR}/Kono/ImGui/ImGuiLayer.cpp"
+        "${HAZEL_SRC_DIR}/Hazel/ImGui/ImGuiBuild.cpp"
+        "${HAZEL_SRC_DIR}/Hazel/ImGui/ImGuiLayer.h"
+        "${HAZEL_SRC_DIR}/Hazel/ImGui/ImGuiLayer.cpp"
 
-        "${KONO_SRC_DIR}/Kono/Platform/OpenGL/OpenGLContext.h"
-        "${KONO_SRC_DIR}/Kono/Platform/OpenGL/OpenGLContext.cpp"
-        "${KONO_SRC_DIR}/Kono/Platform/OSX/MacWindow.h"
-        "${KONO_SRC_DIR}/Kono/Platform/OSX/MacWindow.cpp"
-        "${KONO_SRC_DIR}/Kono/Platform/OSX/MacInput.cpp"
-        "${KONO_SRC_DIR}/Kono/Platform/OSX/MacInput.h"
+        "${HAZEL_SRC_DIR}/Hazel/Platform/OpenGL/OpenGLContext.h"
+        "${HAZEL_SRC_DIR}/Hazel/Platform/OpenGL/OpenGLContext.cpp"
+        "${HAZEL_SRC_DIR}/Hazel/Platform/OSX/MacWindow.h"
+        "${HAZEL_SRC_DIR}/Hazel/Platform/OSX/MacWindow.cpp"
+        "${HAZEL_SRC_DIR}/Hazel/Platform/OSX/MacInput.cpp"
+        "${HAZEL_SRC_DIR}/Hazel/Platform/OSX/MacInput.h"
 
-        "${KONO_SRC_DIR}/Kono/Renderer/GraphicsContext.h"
+        "${HAZEL_SRC_DIR}/Hazel/Renderer/GraphicsContext.h"
         )
 
 set(VENDOR_SOURCES
@@ -81,7 +81,7 @@ add_executable(${TARGET_NAME}
         )
 
 target_include_directories(${TARGET_NAME} PUBLIC
-        "${KONO_SRC_DIR}"
+        "${HAZEL_SRC_DIR}"
         "${VENDOR_DIR}"
         )
 
@@ -101,7 +101,7 @@ target_link_libraries(${TARGET_NAME} PUBLIC
 
 target_compile_definitions(${TARGET_NAME} PRIVATE "GLFW_INCLUDE_NONE") # Do not include OpenGL loader
 
-target_precompile_headers(${TARGET_NAME} PRIVATE "${KONO_SRC_DIR}/knpch.h")
+target_precompile_headers(${TARGET_NAME} PRIVATE "${HAZEL_SRC_DIR}/hzpch.h")
 
 
 
