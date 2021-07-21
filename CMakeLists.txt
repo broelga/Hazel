@@ -70,7 +70,7 @@ set(VENDOR_SOURCES
         "${IMGUI_DIR}/imgui_widgets.cpp"
         "${IMGUI_DIR}/imgui_tables.cpp"
         "${IMGUI_DIR}/imgui_demo.cpp"
-        )
+        Hazel/src/Hazel/Renderer/Shader.cpp Hazel/src/Hazel/Renderer/Shader.h)
 
 # -----------------------------------------------------------------
 # Create executable
