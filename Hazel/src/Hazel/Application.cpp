@@ -2,6 +2,8 @@
 #include "Application.h"
 
 #include "Hazel/Log.h"
+#include "Input.h"
+#include "KeyCodes.h"
 
 #include "Hazel/Renderer/Renderer.h"
 
@@ -167,8 +169,37 @@ namespace Hazel {
             RenderCommand::SetClearColor({0.2f, 0.1f, 0.2f, 1});
             RenderCommand::Clear();
 
-            m_Camera.SetPosition({0.5f, 0.5f, 0.0f});
-            m_Camera.SetRotation(45.0f);
+            static float xPos = 0.0f;
+            static float yPos = 0.0f;
+            static float rotation = 0.0f;
+            {
+                if (Input::IsKeyPressed(HZ_KEY_S)) {
+                    yPos += 0.01;
+                }
+                if (Input::IsKeyPressed(HZ_KEY_W)) {
+                    yPos -= 0.01;
+                }
+                if (Input::IsKeyPressed(HZ_KEY_A)) {
+                    xPos += 0.01;
+                }
+                if (Input::IsKeyPressed(HZ_KEY_D)) {
+                    xPos -= 0.01;
+                }
+                if (Input::IsKeyPressed(HZ_KEY_Q)) {
+                    rotation += 0.5;
+                }
+                if (Input::IsKeyPressed(HZ_KEY_E)) {
+                    rotation -= 0.5;
+                }
+                if (Input::IsKeyPressed(HZ_KEY_SPACE)) {
+                    xPos = 0.0f;
+                    yPos = 0.0f;
+                    rotation = 0.0f;
+                }
+            }
+
+            m_Camera.SetPosition({xPos, yPos, 0.0f});
+            m_Camera.SetRotation(rotation);
 
             Renderer::BeginScene(m_Camera);
             {
