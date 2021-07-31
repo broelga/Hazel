@@ -53,9 +53,7 @@ namespace Hazel {
 
         std::shared_ptr<VertexBuffer> squareVB;
         squareVB.reset(VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
-        squareVB->SetLayout({
-                                    {ShaderDataType::Float3, "a_Position"}
-                            });
+        squareVB->SetLayout({{ShaderDataType::Float3, "a_Position"}});
         m_SquareVA->AddVertexBuffer(squareVB);
 
         uint32_t squareIndices[6] = {0, 1, 2, 2, 3, 0};
@@ -101,16 +99,14 @@ namespace Hazel {
         )";
 
         // Use std::reset to reset the shader
-        m_Shader.reset(new
-                               Shader(vertexSrc, fragmentSrc
-        ));
+        m_Shader.reset(new Shader(vertexSrc, fragmentSrc));
 
         std::string blueShaderVertexSrc = R"(
             #version 330 core
 
             layout(location = 0) in vec3 a_Position;
 
-            // out vec3 v_Position;
+            out vec3 v_Position;
 
             void main() {
                 v_Position = a_Position;
@@ -133,9 +129,7 @@ namespace Hazel {
         )";
 
         // Use std::reset to reset the shader
-        m_BlueShader.reset(new
-                                   Shader(blueShaderVertexSrc, blueShaderFragmentSrc)
-        );
+        m_BlueShader.reset(new Shader(blueShaderVertexSrc, blueShaderFragmentSrc));
     }
 
     Application::~Application() {}
