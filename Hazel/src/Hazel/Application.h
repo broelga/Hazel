@@ -1,17 +1,19 @@
 #pragma once
 
 #include "Core.h"
-
 #include "Window.h"
-#include "Hazel/LayerStack.h"
-#include "Hazel/Events/Event.h"
+
 #include "Hazel/Events/ApplicationEvent.h"
+#include "Hazel/Events/Event.h"
+#include "Hazel/LayerStack.h"
 
 #include "ImGui/ImGuiLayer.h"
 
-#include "Renderer/Shader.h"
 #include "Renderer/Buffer.h"
+#include "Renderer/OrthographicCamera.h"
+#include "Renderer/Shader.h"
 #include "Renderer/VertexArray.h"
+
 
 namespace Hazel {
 
@@ -44,6 +46,8 @@ namespace Hazel {
 
         std::shared_ptr<Shader> m_BlueShader;
         std::shared_ptr<VertexArray> m_SquareVA;
+
+        OrthographicCamera m_Camera;
     private:
         static Application *s_Instance;
     };
