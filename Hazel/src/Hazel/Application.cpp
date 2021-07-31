@@ -1,12 +1,9 @@
 #include "hzpch.h"
 #include "Application.h"
 
-#include "Core.h"
 #include "Hazel/Log.h"
 
-#include "Hazel/Renderer/Buffer.h"
-
-#include <glad/glad.h>
+#include "Hazel/Renderer/Renderer.h"
 
 namespace Hazel {
 
@@ -113,7 +110,7 @@ namespace Hazel {
 
             layout(location = 0) in vec3 a_Position;
 
-            out vec3 v_Position;
+            // out vec3 v_Position;
 
             void main() {
                 v_Position = a_Position;
@@ -167,22 +164,20 @@ namespace Hazel {
 
     void Application::Run() {
         while (m_Running) {
-            GLenum e = glGetError();
-            if (e > 0) {
-                HZ_CORE_ERROR("OpenGL error: {0}", e);
+            RenderCommand::GetError(); // Print any errors
+            RenderCommand::SetClearColor({0.2f, 0.1f, 0.2f, 1});
+            RenderCommand::Clear();
+
+            Renderer::BeginScene();
+            {
+                m_BlueShader->Bind();
+                Renderer::Submit(m_SquareVA);
+
+                m_Shader->Bind();
+                Renderer::Submit(m_VertexArray);
+
+                Renderer::EndScene();
             }
-
-            // Background color
-            glClearColor(0.2f, 0.1f, 0.2f, 1);
-            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-            m_BlueShader->Bind();
-            m_SquareVA->Bind();
-            glDrawElements(GL_TRIANGLES, m_SquareVA->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
-
-            m_Shader->Bind();
-            m_VertexArray->Bind();
-            glDrawElements(GL_TRIANGLES, m_VertexArray->GetIndexBuffer()->GetCount(), GL_UNSIGNED_INT, nullptr);
 
             for (Layer *layer : m_LayerStack) {
                 layer->OnUpdate();

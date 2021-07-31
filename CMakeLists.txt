@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.19)
+cmake_minimum_required(VERSION 3.20)
 project(Hazel)
 
 set(CMAKE_CXX_STANDARD 17)
@@ -7,27 +7,30 @@ set(CMAKE_VERBOSE_MAKEFILE 0) # Enable for more verbose CMake output
 ###################################################################
 # Local variables
 ###################################################################
-set(TARGET_NAME "SandboxHazel")
+set(TARGET_NAME "SandboxApp")
 set(PROJECT_SOURCE_DIR "${PROJECT_NAME}/src")
+set(SANDBOX_SOURCE_DIR "Sandbox/src")
 set(VENDOR_DIR "${PROJECT_NAME}/vendor")
 
 # Vendor/Libraries
 set(SPDLOG "${VENDOR_DIR}/spdlog")
+set(GLFW "${VENDOR_DIR}/GLFW")
 set(GLAD "${VENDOR_DIR}/Glad")
 set(IMGUI "${VENDOR_DIR}/imgui")
 set(GLM "${VENDOR_DIR}/glm")
 
 ###################################################################
-# Target sources
+# Target sources and executable
 ###################################################################
 # Get project sources
 file(GLOB_RECURSE TARGET_SOURCES
         "${PROJECT_SOURCE_DIR}/*.h"
-        "${PROJECT_SOURCE_DIR}/*.cpp")
+        "${PROJECT_SOURCE_DIR}/*.cpp"
+        "${SANDBOX_SOURCE_DIR}/*.cpp"
+        )
 
 # Add any additional files
 list(APPEND TARGET_SOURCES
-        "Sandbox/src/Sandbox.cpp"
         "${SPDLOG}/include/spdlog/spdlog.h" # For logging
         "${IMGUI}/imconfig.h"
         "${IMGUI}/imgui.cpp"
@@ -53,7 +56,7 @@ find_package(glfw3 3.3 REQUIRED)
 add_subdirectory(${SPDLOG})
 add_subdirectory(${GLAD})
 add_subdirectory(${GLM})
-add_subdirectory(${VENDOR_DIR}) # For GLFW/ImGui
+add_subdirectory(${VENDOR_DIR}) # ImGui
 
 target_link_libraries(${TARGET_NAME} PUBLIC
         "spdlog"
