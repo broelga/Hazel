@@ -1,8 +1,6 @@
 #include "hzpch.h"
 #include "Renderer.h"
 
-#include <glad/glad.h> // for GLenum and glGetError()
-
 namespace Hazel {
 
     Renderer::SceneData* Renderer::m_SceneData = new SceneData;

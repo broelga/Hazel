@@ -6,10 +6,8 @@
 #include "backends/imgui_impl_glfw.h"
 
 #include "Hazel/Application.h"
-#include "Hazel/KeyCodes.h"
 
 // TEMPORARY
-#include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
 namespace Hazel {
@@ -32,7 +30,7 @@ namespace Hazel {
         // Setup Dear ImGui style
         ImGui::StyleColorsDark();
 
-//         When viewports are enabled we tweak WindowRounding/WindowBg so platform windows can look identical to the style
+        // When viewports are enabled we tweak WindowRounding/WindowBg so platform windows can look identical to the style
         ImGuiStyle &style = ImGui::GetStyle();
         if (io.ConfigFlags & ImGuiConfigFlags_ViewportsEnable) {
             style.WindowRounding = 0.0f;
