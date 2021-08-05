@@ -11,3 +11,6 @@ git clone --recursive https://github.com/brolgedu/Hazel ~/dev/Hazel &&
 mkdir ~/dev/Hazel/build && cd ~/dev/Hazel/build && 
 cmake ../ && cmake --build ./ && ./SandboxApp
 ```
+
+## Camera controls
+You can move the camera using the arrow keys and rotate the camera using the A and D keys.
