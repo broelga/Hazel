@@ -1,5 +1,3 @@
-#pragma once
-
 #include "RenderCommand.h"
 
 #include <Hazel/Platform/OpenGL/OpenGLRendererAPI.h>
