@@ -7,7 +7,7 @@ set(CMAKE_VERBOSE_MAKEFILE 0) # Enable for more verbose CMake output
 ###################################################################
 # Local variables
 ###################################################################
-set(TARGET_NAME "SandboxApp")
+set(TARGET_NAME  "SandboxApp")
 set(PROJECT_SOURCE_DIR "${PROJECT_NAME}/src")
 set(SANDBOX_SOURCE_DIR "Sandbox/src")
 set(VENDOR_DIR "${PROJECT_NAME}/vendor")

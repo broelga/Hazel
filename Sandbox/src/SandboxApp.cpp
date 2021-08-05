@@ -1,8 +1,12 @@
 #include "SandboxApp.h"
 
+#include "Hazel/Platform/OpenGL/OpenGLShader.h"
+
 #include "imgui/imgui.h"
 
 #include <glm/gtc/matrix_transform.hpp> // for glm::translate
+#include <glm/gtc/type_ptr.hpp> // for value_ptr
+
 
 ExampleLayer::ExampleLayer()
         : Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9), m_CameraPosition(0.0f) {
@@ -89,9 +93,9 @@ ExampleLayer::ExampleLayer()
         )";
 
     // Use std::reset to reset the shader
-    m_Shader.reset(new Hazel::Shader(vertexSrc, fragmentSrc));
+    m_Shader.reset(Hazel::Shader::Create(vertexSrc, fragmentSrc));
 
-    std::string blueShaderVertexSrc = R"(
+    std::string flatColorShaderVertexSrc = R"(
             #version 330 core
 
             layout(location = 0) in vec3 a_Position;
@@ -109,20 +113,22 @@ ExampleLayer::ExampleLayer()
 
     // (1.0f, 0.0f, 0.0f) == Red
     // (1.0f, 0.5f, 0.15f) == Orange
-    std::string blueShaderFragmentSrc = R"(
+    std::string flatColorShaderFragmentSrc = R"(
             #version 330 core
 
             layout(location = 0) out vec4 color;
 
             in vec3 v_Position;
 
+            uniform vec3 u_Color;
+
             void main() {
-                color = vec4(0.2, 0.3, 0.8, 1.0);
+                color = vec4(u_Color, 1.0);
             }
         )";
 
     // Use std::reset to reset the shader
-    m_BlueShader.reset(new Hazel::Shader(blueShaderVertexSrc, blueShaderFragmentSrc));
+    m_FlatColorShader.reset(Hazel::Shader::Create(flatColorShaderVertexSrc, flatColorShaderFragmentSrc));
 }
 
 void ExampleLayer::OnUpdate(Hazel::Timestep ts) {
@@ -162,18 +168,32 @@ void ExampleLayer::OnUpdate(Hazel::Timestep ts) {
 
     glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
 
+    std::dynamic_pointer_cast<Hazel::OpenGLShader>(m_FlatColorShader)->Bind();
+    std::dynamic_pointer_cast<Hazel::OpenGLShader>(m_FlatColorShader)->UploadUniformFloat3("u_Color", m_SquareColor);
+
     // Create square grid map
     for (int y = -10; y < 10; ++y) {
         for (int x = -10; x < 10; ++x) {
             glm::vec3 pos(x * 0.11f, y * 0.11f, 0.0f);
             glm::mat4 transform = glm::translate(glm::mat4(1.0f), pos) * scale;
-            Hazel::Renderer::Submit(m_BlueShader, m_SquareVA, transform);
+            Hazel::Renderer::Submit(m_FlatColorShader, m_SquareVA, transform);
         }
     }
+
     Hazel::Renderer::Submit(m_Shader, m_VertexArray);
 
     Hazel::Renderer::EndScene();
 }
+
+void ExampleLayer::OnImGuiRender() {
+    ImGui::Begin("Settings");
+    ImGui::ColorEdit3("Square Color", glm::value_ptr(m_SquareColor));
+    ImGui::End();
+}
+
+void ExampleLayer::OnEvent(Hazel::Event &event) {
+}
+
 
 class Sandbox : public Hazel::Application {
 public:
