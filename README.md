@@ -12,5 +12,5 @@ mkdir ~/dev/Hazel/build && cd ~/dev/Hazel/build &&
 cmake ../ && cmake --build ./ && ./SandboxApp
 ```
 
-## Camera controls
+### Camera controls
 You can move the camera using the arrow keys and rotate the camera using the A and D keys.
