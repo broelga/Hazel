@@ -13,4 +13,4 @@ cmake ../ && cmake --build ./ && ./SandboxApp
 ```
 
 ### Camera controls
-You can move the camera using the arrow keys and rotate the camera using the A and D keys.
+You can move the camera using the arrow keys, rotate the camera using the A and D keys, and reset the camera with the SPACE key.
