@@ -14,7 +14,7 @@ namespace Hazel {
             case RendererAPI::API::OpenGL:return new OpenGLVertexBuffer(vertices, size);
         }
 
-        HZ_CORE_ASSERT(falase, "Unknown RendererAPI!");
+        HZ_CORE_ASSERT(false, "Unknown RendererAPI!");
         return nullptr;
     }
 

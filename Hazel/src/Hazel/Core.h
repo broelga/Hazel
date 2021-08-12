@@ -2,9 +2,15 @@
 
 #include <memory> // for std::unique_ptr and std::shared_ptr
 
+#if defined(__clang__)
+#define DEBUG_BREAK __builtin_debugtrap()
+#elif defined(_MSC_VER)
+#define DEBUG_BREAK __debugbreak()
+#endif
+
 #ifdef HZ_ENABLE_ASSERTS
-#define HZ_ASSERT(x, ...) { if(!x)) { HZ_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
-#define HZ_CORE_ASSERT(x, ...) { if(!x)) { HZ_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); __debugbreak(); } }
+#define HZ_ASSERT(x, ...) { if(!x) { HZ_ERROR("Assertion Failed: {0}", __VA_ARGS__); DEBUG_BREAK; } }
+#define HZ_CORE_ASSERT(x, ...) { if(!x) { HZ_CORE_ERROR("Assertion Failed: {0}", __VA_ARGS__); DEBUG_BREAK; } }
 #else
 #define HZ_ASSERT(x, ...)
 #define HZ_CORE_ASSERT(x, ...)
