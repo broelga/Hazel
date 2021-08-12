@@ -5,7 +5,7 @@
 #include "imgui/imgui.h"
 
 #include <glm/gtc/matrix_transform.hpp> // for glm::translate
-#include <glm/gtc/type_ptr.hpp> // for value_ptr
+#include <glm/gtc/type_ptr.hpp> // for glm::value_ptr
 
 
 ExampleLayer::ExampleLayer()
@@ -35,16 +35,19 @@ ExampleLayer::ExampleLayer()
 
     m_SquareVA.reset(Hazel::VertexArray::Create());
 
-    float squareVertices[3 * 4] = {
-            -0.5f, -0.5f, 0.0f,
-            0.5f, -0.5f, 0.0f,
-            0.5f, 0.5f, 0.0f,
-            -0.5f, 0.5f, 0.0f
+    float squareVertices[5 * 4] = {
+            -0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
+            0.5f, -0.5f, 0.0f, 1.0, 0.0f,
+            0.5f, 0.5f, 0.0f, 1.0, 1.0f,
+            -0.5f, 0.5f, 0.0f, 0.0, 1.0f
     };
 
     Hazel::Ref<Hazel::VertexBuffer> squareVB;
     squareVB.reset(Hazel::VertexBuffer::Create(squareVertices, sizeof(squareVertices)));
-    squareVB->SetLayout({{Hazel::ShaderDataType::Float3, "a_Position"}});
+    squareVB->SetLayout({
+                                {Hazel::ShaderDataType::Float3, "a_Position"},
+                                {Hazel::ShaderDataType::Float2, "a_TexCoord"}
+                        });
     m_SquareVA->AddVertexBuffer(squareVB);
 
     uint32_t squareIndices[6] = {0, 1, 2, 2, 3, 0};
@@ -87,7 +90,7 @@ ExampleLayer::ExampleLayer()
             in vec4 v_Color;
 
             void main() {
-                color = vec4(v_Position * 0.5 + 0.5, 1.0); // This moves color range from [-1,1] to [0,1] range
+                color = vec4(v_Position * 0.5 + 0.5, 1.0);
                 color = v_Color;
             }
         )";
@@ -129,20 +132,60 @@ ExampleLayer::ExampleLayer()
 
     // Use std::reset to reset the shader
     m_FlatColorShader.reset(Hazel::Shader::Create(flatColorShaderVertexSrc, flatColorShaderFragmentSrc));
+
+    std::string TextureShaderVertexSrc = R"(
+            #version 330 core
+
+            layout(location = 0) in vec3 a_Position;
+            layout(location = 1) in vec2 a_TexCoord;
+
+            uniform mat4 u_ViewProjection;
+            uniform mat4 u_Transform;
+
+            out vec2 v_TexCoord;
+
+            void main() {
+                v_TexCoord = a_TexCoord;
+                gl_Position =  u_ViewProjection * u_Transform * vec4(a_Position, 1.0);
+            }
+    )";
+
+    std::string TextureShaderFragmentSrc = R"(
+            #version 330 core
+
+            layout(location = 0) out vec4 color;
+
+            in vec2 v_TexCoord;
+
+            uniform sampler2D u_Texture;
+
+            void main() {
+                color = texture(u_Texture, v_TexCoord);
+            }
+    )";
+
+    // Use std::reset to reset the shader
+    m_TextureShader.reset(Hazel::Shader::Create(TextureShaderVertexSrc, TextureShaderFragmentSrc));
+
+    // Set texture
+    m_Texture = Hazel::Texture2D::Create("assets/textures/Checkerboard1.png");
+
+    std::dynamic_pointer_cast<Hazel::OpenGLShader>(m_TextureShader)->Bind();
+    std::dynamic_pointer_cast<Hazel::OpenGLShader>(m_TextureShader)->UploadUniformInt("u_Texture", 0);
 }
 
 void ExampleLayer::OnUpdate(Hazel::Timestep ts) {
     HZ_TRACE("Delta time: {0}s ({1}ms)", ts.GetSeconds(), ts.GetMilliseconds());
 
     if (Hazel::Input::IsKeyPressed(HZ_KEY_LEFT)) {
-        m_CameraPosition.x += m_CameraMoveSpeed * ts;
-    } else if (Hazel::Input::IsKeyPressed(HZ_KEY_RIGHT)) {
         m_CameraPosition.x -= m_CameraMoveSpeed * ts;
+    } else if (Hazel::Input::IsKeyPressed(HZ_KEY_RIGHT)) {
+        m_CameraPosition.x += m_CameraMoveSpeed * ts;
     }
     if (Hazel::Input::IsKeyPressed(HZ_KEY_DOWN)) {
-        m_CameraPosition.y += m_CameraMoveSpeed * ts;
-    } else if (Hazel::Input::IsKeyPressed(HZ_KEY_UP)) {
         m_CameraPosition.y -= m_CameraMoveSpeed * ts;
+    } else if (Hazel::Input::IsKeyPressed(HZ_KEY_UP)) {
+        m_CameraPosition.y += m_CameraMoveSpeed * ts;
     }
     if (Hazel::Input::IsKeyPressed(HZ_KEY_A)) {
         m_CameraRotation -= m_CameraRotationSpeed * ts;
@@ -157,8 +200,8 @@ void ExampleLayer::OnUpdate(Hazel::Timestep ts) {
         m_CameraRotation = 0.0f;
     }
 
-    Hazel::RenderCommand::GetError(); // Print any errors
-    Hazel::RenderCommand::SetClearColor({0.2f, 0.1f, 0.2f, 1});
+    // Hazel::RenderCommand::GetError(); // Print any errors
+    Hazel::RenderCommand::SetClearColor({0.1f, 0.1f, 0.1f, 1}); // Bkgd color
     Hazel::RenderCommand::Clear();
 
     m_Camera.SetPosition(m_CameraPosition);
@@ -172,21 +215,28 @@ void ExampleLayer::OnUpdate(Hazel::Timestep ts) {
     std::dynamic_pointer_cast<Hazel::OpenGLShader>(m_FlatColorShader)->UploadUniformFloat3("u_Color", m_SquareColor);
 
     // Create square grid map
-    for (int y = -10; y < 10; ++y) {
-        for (int x = -10; x < 10; ++x) {
+    for (int y = 0; y < 20; ++y) {
+        for (int x = 0; x < 20; ++x) {
             glm::vec3 pos(x * 0.11f, y * 0.11f, 0.0f);
             glm::mat4 transform = glm::translate(glm::mat4(1.0f), pos) * scale;
             Hazel::Renderer::Submit(m_FlatColorShader, m_SquareVA, transform);
         }
     }
 
-    Hazel::Renderer::Submit(m_Shader, m_VertexArray);
+    // Bind texture
+    m_Texture->Bind();
+
+    // Render square
+    Hazel::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+
+    // Render triangle
+    // Hazel::Renderer::Submit(m_Shader, m_VertexArray);
 
     Hazel::Renderer::EndScene();
 }
 
 void ExampleLayer::OnImGuiRender() {
-    ImGui::Begin("Settings"); 
+    ImGui::Begin("Settings");
     ImGui::ColorEdit3("Square Color", glm::value_ptr(m_SquareColor));
     ImGui::End();
 }
