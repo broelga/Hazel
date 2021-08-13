@@ -16,7 +16,7 @@ private:
     Hazel::Ref<Hazel::Shader> m_FlatColorShader, m_TextureShader;
     Hazel::Ref<Hazel::VertexArray> m_SquareVA;
 
-    Hazel::Ref<Hazel::Texture2D> m_Texture;
+    Hazel::Ref<Hazel::Texture2D> m_Texture, m_BLogoTexture;
 
     Hazel::OrthographicCamera m_Camera;
     glm::vec3 m_CameraPosition;

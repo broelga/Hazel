@@ -16,9 +16,11 @@ namespace Hazel {
         m_Width = width;
         m_Height = height;
 
-        m_InternalFormat = (channels == 4) ? GL_RGBA8 : (channels == 3) ? GL_RGB8 : 0;
-        m_DataFormat = (channels == 4) ? GL_RGBA : (channels == 3) ? GL_RGB : 0;
-        HZ_CORE_ASSERT((m_InternalFormat & m_DataFormat), "Format not supported!");
+        GLenum internalFormat = (channels == 4) ? GL_RGBA8 : (channels == 3) ? GL_RGB8 : 0;
+        GLenum dataFormat = (channels == 4) ? GL_RGBA : (channels == 3) ? GL_RGB : 0;
+        HZ_CORE_ASSERT((internalFormat & dataFormat), "Format not supported!");
+        m_InternalFormat = internalFormat;
+        m_DataFormat = dataFormat;
 
         // Upload to GPU
         glGenTextures(1, &m_RendererID);
@@ -32,6 +34,8 @@ namespace Hazel {
 
         glTexImage2D(GL_TEXTURE_2D, 0, m_InternalFormat, m_Width, m_Height, 0, m_DataFormat, GL_UNSIGNED_BYTE, data);
 
+        glBindTexture(GL_TEXTURE_2D, 0);
+
         stbi_image_free(data);
     }
 
@@ -40,6 +44,7 @@ namespace Hazel {
     }
 
     void OpenGLTexture2D::Bind(uint32_t slot) const {
-        glBindTexture(slot, m_RendererID);
+        glActiveTexture(GL_TEXTURE0 + slot);
+        glBindTexture(GL_TEXTURE_2D, m_RendererID);
     }
 }

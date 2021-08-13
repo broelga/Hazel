@@ -169,9 +169,12 @@ ExampleLayer::ExampleLayer()
 
     // Set texture
     m_Texture = Hazel::Texture2D::Create("assets/textures/Checkerboard1.png");
+    m_BLogoTexture = Hazel::Texture2D::Create("assets/textures/logoB_no_bkgd.png");
 
+    // Bind and upload shader
     std::dynamic_pointer_cast<Hazel::OpenGLShader>(m_TextureShader)->Bind();
     std::dynamic_pointer_cast<Hazel::OpenGLShader>(m_TextureShader)->UploadUniformInt("u_Texture", 0);
+
 }
 
 void ExampleLayer::OnUpdate(Hazel::Timestep ts) {
@@ -223,10 +226,10 @@ void ExampleLayer::OnUpdate(Hazel::Timestep ts) {
         }
     }
 
-    // Bind texture
+    // Bind texture and render square
     m_Texture->Bind();
-
-    // Render square
+    Hazel::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+    m_BLogoTexture->Bind();
     Hazel::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
     // Render triangle
