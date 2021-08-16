@@ -65,15 +65,24 @@ target_include_directories(${TARGET_NAME} PUBLIC
 ###################################################################
 # Copy executable dependencies to CMake binary directory
 ###################################################################
-file(GLOB SANDBOX_TEXTURES
+file(GLOB SANDBOX_TEXTURES # --------------------------------------
         "${SANDBOX_DIR}/assets/textures/*.png"
         "${SANDBOX_DIR}/assets/textures/*jpg"
         )
-# Copy textures
 foreach (texture ${SANDBOX_TEXTURES})
     file(COPY "${texture}"
             DESTINATION "${CMAKE_BINARY_DIR}/assets/textures")
 endforeach (texture)
+# -----------------------------------------------------------------
+
+file(GLOB SANDBOX_SHADERS # ---------------------------------------
+        "${SANDBOX_DIR}/assets/shaders/*.glsl"
+        )
+foreach (shader ${SANDBOX_SHADERS})
+    file(COPY "${shader}"
+            DESTINATION "${CMAKE_BINARY_DIR}/assets/shaders")
+endforeach (shader)
+# -----------------------------------------------------------------
 
 ###################################################################
 # Libraries
