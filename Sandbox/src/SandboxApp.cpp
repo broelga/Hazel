@@ -15,8 +15,8 @@ ExampleLayer::ExampleLayer()
 
     float vertices[3 * 7] = {
             -0.5f, -0.5f, 0.0f, 0.8f, 0.2f, 0.8f, 1.0f, // Left side of the screen
-            0.5f, -0.5f, 0.0f, 0.2f, 0.3f, 0.8f, 1.0f,// Right side of the screen
-            0.0f, 0.5f, 0.0f, 0.8f, 0.8f, 0.2f, 1.0f // Top of screen
+            0.5f, -0.5f, 0.0f, 0.2f, 0.3f, 0.8f, 1.0f, // Right side of the screen
+            0.0f, 0.5f, 0.0f, 0.8f, 0.8f, 0.2f, 1.0f // Top of screen.
     };
 
     Hazel::Ref<Hazel::VertexBuffer> vertexBuffer;

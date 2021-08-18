@@ -1,6 +1,10 @@
 cmake_minimum_required(VERSION 3.1...3.17 FATAL_ERROR)
 
-project(GLFW VERSION 3.4.0 LANGUAGES C)
+if(__APPLE__)
+    project(GLFW VERSION 3.3.0 LANGUAGES C)
+else()
+    project(GLFW VERSION 3.4.0 LANGUAGES C)
+endif()
 
 set(CMAKE_LEGACY_CYGWIN_WIN32 OFF)
 

@@ -87,7 +87,12 @@ endforeach (shader)
 ###################################################################
 # Libraries
 ###################################################################
-find_package(glfw3 3.3 REQUIRED) # Do not use GLFW version 3.4+ due to GLFW_MOUSE_PASSTHROUGH bug.
+if (__APPLE__)
+    find_package(glfw3 3.3 REQUIRED) # Do not use GLFW version 3.4+ due to GLFW_MOUSE_PASSTHROUGH bug.
+else()
+    find_package(glfw3 3.4 REQUIRED)
+endif()
+
 add_subdirectory(${SPDLOG})
 add_subdirectory(${GLAD})
 add_subdirectory(${GLM})
