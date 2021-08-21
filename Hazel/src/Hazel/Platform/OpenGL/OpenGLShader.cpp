@@ -23,9 +23,19 @@ namespace Hazel {
         std::string source = ReadFile(filepath);
         auto shaderSources = PreProcess(source);
         Compile(shaderSources);
+
+        /** Extract name from filepath */
+        // "assets\shaders\Textures.glsl" -- Windows
+        // "assets/shaders/Textures.glsl" -- Unix
+        auto lastSlash = filepath.find_last_of("/\\");
+        lastSlash = lastSlash == std::string::npos ? 0 : lastSlash + 1;
+        auto lastDot = filepath.rfind('.');
+        auto count = lastDot == std::string::npos ? filepath.size() - lastSlash : lastDot - lastSlash;
+        m_Name = filepath.substr(lastSlash, count);
     }
 
-    OpenGLShader::OpenGLShader(const std::string &vertexSrc, const std::string &fragmentSrc) {
+    OpenGLShader::OpenGLShader(const std::string &name, const std::string &vertexSrc, const std::string &fragmentSrc)
+            : m_Name(name) {
         std::unordered_map<GLenum, std::string> sources;
         sources[GL_VERTEX_SHADER] = vertexSrc;
         sources[GL_FRAGMENT_SHADER] = fragmentSrc;
@@ -38,7 +48,7 @@ namespace Hazel {
 
     std::string OpenGLShader::ReadFile(const std::string &filepath) {
         std::string result;
-        std::ifstream in(filepath, std::ios::binary);
+        std::ifstream in(filepath, std::ios::in | std::ios::binary);
         // Get size of file, create string that is that size, and load everything from file into string
         if (in) {
             in.seekg(0, std::ios::end);
@@ -78,8 +88,9 @@ namespace Hazel {
 
     void OpenGLShader::Compile(std::unordered_map<GLenum, std::string> &shaderSources) {
         GLuint program = glCreateProgram();
-        std::vector<GLenum> glShaderIDs(shaderSources.size()); // For keeping track of ShaderIDs
-
+        HZ_CORE_ASSERT((shaderSources.size() <= 2), "We only support 2 shaders for now");
+        std::array<GLenum, 2> glShaderIDs; // For keeping track of ShaderIDs
+        int glShaderIDIndex = 0;
         for (auto &kv : shaderSources) {
             GLenum type = kv.first;
             const std::string &source = kv.second;
@@ -115,7 +126,7 @@ namespace Hazel {
             }
             // Attach our shaders to our program
             glAttachShader(program, shader);
-            glShaderIDs.push_back(shader);
+            glShaderIDs[glShaderIDIndex++] = shader;
         }
 
         // Vertex and fragment shaders are successfully compiled.

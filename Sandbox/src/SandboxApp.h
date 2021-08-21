@@ -10,10 +10,11 @@ public:
     virtual void OnEvent(Hazel::Event &event) override;
 
 private:
+    Hazel::ShaderLibrary m_ShaderLibrary;
     Hazel::Ref<Hazel::Shader> m_Shader;
     Hazel::Ref<Hazel::VertexArray> m_VertexArray;
 
-    Hazel::Ref<Hazel::Shader> m_FlatColorShader, m_TextureShader;
+    Hazel::Ref<Hazel::Shader> m_FlatColorShader;
     Hazel::Ref<Hazel::VertexArray> m_SquareVA;
 
     Hazel::Ref<Hazel::Texture2D> m_Texture, m_BLogoTexture;

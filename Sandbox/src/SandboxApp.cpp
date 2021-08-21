@@ -7,7 +7,6 @@
 #include <glm/gtc/matrix_transform.hpp> // for glm::translate
 #include <glm/gtc/type_ptr.hpp> // for glm::value_ptr
 
-
 ExampleLayer::ExampleLayer()
         : Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9), m_CameraPosition(0.0f) {
 
@@ -96,7 +95,7 @@ ExampleLayer::ExampleLayer()
         )";
 
     // Use std::reset to reset the shader
-    m_Shader.reset(Hazel::Shader::Create(vertexSrc, fragmentSrc));
+    m_Shader = Hazel::Shader::Create("VertexPosColor", vertexSrc, fragmentSrc);
 
     std::string flatColorShaderVertexSrc = R"(
             #version 330 core
@@ -131,18 +130,18 @@ ExampleLayer::ExampleLayer()
         )";
 
     // Use std::reset to reset the shader
-    m_FlatColorShader.reset(Hazel::Shader::Create(flatColorShaderVertexSrc, flatColorShaderFragmentSrc));
+    m_FlatColorShader = Hazel::Shader::Create("FlatColor", flatColorShaderVertexSrc, flatColorShaderFragmentSrc);
 
     // Use std::reset to reset the shader
-    m_TextureShader.reset(Hazel::Shader::Create("assets/shaders/Texture.glsl"));
+    auto textureShader = m_ShaderLibrary.Load("assets/shaders/Texture.glsl");
 
     // Set texture
     m_Texture = Hazel::Texture2D::Create("assets/textures/Checkerboard1.png");
     m_BLogoTexture = Hazel::Texture2D::Create("assets/textures/logoB_no_bkgd.png");
 
     // Bind and upload shader
-    std::dynamic_pointer_cast<Hazel::OpenGLShader>(m_TextureShader)->Bind();
-    std::dynamic_pointer_cast<Hazel::OpenGLShader>(m_TextureShader)->UploadUniformInt("u_Texture", 0);
+    std::dynamic_pointer_cast<Hazel::OpenGLShader>(textureShader)->Bind();
+    std::dynamic_pointer_cast<Hazel::OpenGLShader>(textureShader)->UploadUniformInt("u_Texture", 0);
 
 }
 
@@ -195,11 +194,13 @@ void ExampleLayer::OnUpdate(Hazel::Timestep ts) {
         }
     }
 
+    auto textureShader = m_ShaderLibrary.Get("Texture");
+
     // Bind texture and render square
     m_Texture->Bind();
-    Hazel::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+    Hazel::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
     m_BLogoTexture->Bind();
-    Hazel::Renderer::Submit(m_TextureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
+    Hazel::Renderer::Submit(textureShader, m_SquareVA, glm::scale(glm::mat4(1.0f), glm::vec3(1.5f)));
 
     // Render triangle
     // Hazel::Renderer::Submit(m_Shader, m_VertexArray);
