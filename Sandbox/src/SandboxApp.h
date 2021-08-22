@@ -7,7 +7,7 @@ public:
 
     virtual void OnImGuiRender() override;
 
-    virtual void OnEvent(Hazel::Event &event) override;
+    virtual void OnEvent(Hazel::Event &e) override;
 
 private:
     Hazel::ShaderLibrary m_ShaderLibrary;
@@ -19,12 +19,8 @@ private:
 
     Hazel::Ref<Hazel::Texture2D> m_Texture, m_BLogoTexture;
 
-    Hazel::OrthographicCamera m_Camera;
-    glm::vec3 m_CameraPosition;
-    float m_CameraMoveSpeed = 0.45f;
-
-    float m_CameraRotation = 0.0f;
-    float m_CameraRotationSpeed = 30.0f;
+    Hazel::OrthographicCameraController m_CameraController;
+    float m_CameraSpeed = 1.0f;
 
     glm::vec3 m_SquareColor = {0.2f, 0.3f, 0.8f};
 
