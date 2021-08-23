@@ -147,7 +147,7 @@ ExampleLayer::ExampleLayer()
 
 void ExampleLayer::OnUpdate(Hazel::Timestep ts) {
     // Hazel::RenderCommand::GetError(); // Print any errors
-    HZ_TRACE("Delta time: {0}s ({1}ms)", ts.GetSeconds(), ts.GetMilliseconds());
+    // HZ_TRACE("Delta time: {0}s ({1}ms)", ts.GetSeconds(), ts.GetMilliseconds());
 
     // Update
     m_CameraSpeed = ts * 0.15;
@@ -195,6 +195,14 @@ void ExampleLayer::OnImGuiRender() {
 
 void ExampleLayer::OnEvent(Hazel::Event &e) {
     m_CameraController.OnEvent(e);
+
+    // if (e.GetEventType() == Hazel::EventType::WindowResize) {
+    //     auto &re =(Hazel::WindowResizeEvent&) e;
+    //
+    //     float zoom = (float)re.GetWidth() / 1200.0f;
+    //
+    //     m_CameraController.SetZoomLevel(zoom);
+    // }
 }
 
 
