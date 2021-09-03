@@ -26,21 +26,24 @@ namespace Hazel {
 
         if (m_Rotation) {
             if (Input::IsKeyPressed(HZ_KEY_Q)) {
-                m_CameraRotation -= m_CameraRotationSpeed * ts;
+                m_CameraRotation -= m_CameraRotationSpeed * ts * 10;
             }
             if (Hazel::Input::IsKeyPressed(HZ_KEY_E)) {
-                m_CameraRotation += m_CameraRotationSpeed * ts;
+                m_CameraRotation += m_CameraRotationSpeed * ts * 10;
             }
 
             m_Camera.SetRotation(m_CameraRotation);
         }
 
         // Reset camera
-        if (Hazel::Input::IsKeyPressed(HZ_KEY_0) || Hazel::Input::IsMouseButtonPressed(HZ_MOUSE_BUTTON_MIDDLE)) {
+        if (Hazel::Input::IsKeyPressed(HZ_KEY_0) ||
+            Hazel::Input::IsKeyPressed(HZ_KEY_SPACE) ||
+            Hazel::Input::IsMouseButtonPressed(HZ_MOUSE_BUTTON_MIDDLE)) {
             m_CameraPosition.x = 0.0f;
             m_CameraPosition.y = 0.0f;
             m_ZoomLevel = 1.0f;
-            m_Camera.SetProjection(-m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel, m_ZoomLevel);
+            m_Camera.SetProjection(-m_AspectRatio * m_ZoomLevel, m_AspectRatio * m_ZoomLevel, -m_ZoomLevel,
+                                   m_ZoomLevel);
         }
 
         m_Camera.SetPosition(m_CameraPosition);

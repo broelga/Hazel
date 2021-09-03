@@ -1,16 +1,19 @@
 #include "SandboxApp.h"
 
-#include "Hazel/Platform/OpenGL/OpenGLShader.h"
+#include <Hazel/Core/EntryPoint.h>
+#include <Hazel/Platform/OpenGL/OpenGLShader.h>
 
 #include "imgui/imgui.h"
 
 #include <glm/gtc/matrix_transform.hpp> // for glm::translate
 #include <glm/gtc/type_ptr.hpp> // for glm::value_ptr
 
-ExampleLayer::ExampleLayer()
-        : Layer("Example"), m_CameraController(1280.0f / 720.0f) {
+#include "Sandbox2D.h"
 
-    m_VertexArray.reset(Hazel::VertexArray::Create());
+ExampleLayer::ExampleLayer()
+        : Layer("Example"), m_CameraController(1280.0f / 720.0f, true) {
+
+    m_VertexArray = Hazel::VertexArray::Create();
 
     float vertices[3 * 7] = {
             -0.5f, -0.5f, 0.0f, 0.8f, 0.2f, 0.8f, 1.0f, // Left side of the screen
@@ -32,7 +35,7 @@ ExampleLayer::ExampleLayer()
     indexBuffer.reset(Hazel::IndexBuffer::Create(indices, sizeof(indices) / sizeof(uint32_t)));
     m_VertexArray->SetIndexBuffer(indexBuffer);
 
-    m_SquareVA.reset(Hazel::VertexArray::Create());
+    m_SquareVA = Hazel::VertexArray::Create();
 
     float squareVertices[5 * 4] = {
             -0.5f, -0.5f, 0.0f, 0.0f, 0.0f,
@@ -161,6 +164,7 @@ void ExampleLayer::OnUpdate(Hazel::Timestep ts) {
 
     glm::mat4 scale = glm::scale(glm::mat4(1.0f), glm::vec3(0.1f));
 
+    // TODO: Add these two functions - Shader::SetMat4, Shader::Float4
     std::dynamic_pointer_cast<Hazel::OpenGLShader>(m_FlatColorShader)->Bind();
     std::dynamic_pointer_cast<Hazel::OpenGLShader>(m_FlatColorShader)->UploadUniformFloat3("u_Color", m_SquareColor);
 
@@ -195,21 +199,14 @@ void ExampleLayer::OnImGuiRender() {
 
 void ExampleLayer::OnEvent(Hazel::Event &e) {
     m_CameraController.OnEvent(e);
-
-    // if (e.GetEventType() == Hazel::EventType::WindowResize) {
-    //     auto &re =(Hazel::WindowResizeEvent&) e;
-    //
-    //     float zoom = (float)re.GetWidth() / 1200.0f;
-    //
-    //     m_CameraController.SetZoomLevel(zoom);
-    // }
 }
 
 
 class Sandbox : public Hazel::Application {
 public:
     Sandbox() {
-        PushLayer(new ExampleLayer());
+        // PushLayer(new ExampleLayer());
+        PushLayer(new Sandbox2D());
     }
 
     ~Sandbox() {}
