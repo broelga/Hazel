@@ -1,6 +1,6 @@
 #pragma once
 
-#if defined (HZ_PLATFORM_OSX)
+#if defined (HZ_PLATFORM_WINDOWS) // Windows OS only
 
 #include "Hazel/Window.h"
 #include "Hazel/Renderer/GraphicsContext.h"
@@ -8,10 +8,10 @@
 #include <GLFW/glfw3.h>
 
 namespace Hazel {
-    class MacWindow : public Window {
+    class WindowsWindow : public Window {
     public:
-        MacWindow(const WindowProps &props);
-        virtual ~MacWindow();
+        WindowsWindow(const WindowProps &props);
+        virtual ~WindowsWindow();
 
         void OnUpdate() override;
 
@@ -45,6 +45,6 @@ namespace Hazel {
         WindowData m_Data;
     };
 }
-#endif // HZ_PLATFORM_OSX
+#endif // HZ_PLATFORM_WINDOWS
 
 

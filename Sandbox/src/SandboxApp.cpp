@@ -7,7 +7,6 @@
 #include <glm/gtc/matrix_transform.hpp> // for glm::translate
 #include <glm/gtc/type_ptr.hpp> // for glm::value_ptr
 
-
 ExampleLayer::ExampleLayer()
         : Layer("Example"), m_Camera(-1.6f, 1.6f, -0.9f, 0.9), m_CameraPosition(0.0f) {
 

@@ -2,10 +2,24 @@
 
 #include <memory> // for std::unique_ptr and std::shared_ptr
 
+#ifdef HZ_PLATFORM_WINDOWS
+#ifdef HZ_BUILD_DLL
+#define HAZEL_API __declspec(dllexport)
+#else
+#define HAZEL_API __declspec(dllimport)
+#endif
+#else
+#define HZ_PLATFORM_OSX
+#endif
+
 #if defined(__clang__)
 #define DEBUG_BREAK __builtin_debugtrap()
 #elif defined(_MSC_VER)
 #define DEBUG_BREAK __debugbreak()
+#endif
+
+#ifdef HZ_DEBUG
+#define HZ_ENABLE_ASSERTS
 #endif
 
 #ifdef HZ_ENABLE_ASSERTS

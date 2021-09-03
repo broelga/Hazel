@@ -1,8 +1,8 @@
-#if defined (HZ_PLATFORM_OSX)
+#if defined (HZ_PLATFORM_WINDOWS)
 
 #include "hzpch.h"
 #include "Hazel/Log.h"
-#include "MacWindow.h"
+#include "WindowsWindow.h"
 
 #include "Hazel/Events/ApplicationEvent.h"
 #include "Hazel/Events/MouseEvent.h"
@@ -20,13 +20,13 @@ namespace Hazel {
         HZ_CORE_ERROR("GLFW Error ({0}): {1}", error, description);
     }
 
-    Window *Window::Create(const WindowProps &props) { return new MacWindow(props); }
+    Window *Window::Create(const WindowProps &props) { return new WindowsWindow(props); }
 
-    MacWindow::MacWindow(const WindowProps &props) { Init(props); }
+    WindowsWindow::WindowsWindow(const WindowProps &props) { Init(props); }
 
-    MacWindow::~MacWindow() { Shutdown(); }
+    WindowsWindow::~WindowsWindow() { Shutdown(); }
 
-    void MacWindow::Init(const WindowProps &props) {
+    void WindowsWindow::Init(const WindowProps &props) {
         m_Data.Title = props.Title;
         m_Data.Width = props.Width;
         m_Data.Height = props.Height;
@@ -38,10 +38,12 @@ namespace Hazel {
             int success = glfwInit();
             HZ_CORE_ASSERT(success, "Could not initialize GLFW!");
 
+            /** Enable if OpenGL version >= 4.1
             glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, true);
             glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
             glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 1);
             glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+             */
             glfwSetErrorCallback(GLFWErrorCallback);
 
             s_GLFWInitialized = true;
@@ -135,14 +137,14 @@ namespace Hazel {
 
     }
 
-    void MacWindow::Shutdown() { glfwDestroyWindow(m_Window); }
+    void WindowsWindow::Shutdown() { glfwDestroyWindow(m_Window); }
 
-    void MacWindow::OnUpdate() {
+    void WindowsWindow::OnUpdate() {
         glfwPollEvents();
         m_Context->SwapBuffers();
     }
 
-    void MacWindow::SetVSync(bool enabled) {
+    void WindowsWindow::SetVSync(bool enabled) {
         if (enabled) {
             glfwSwapInterval(1);
         } else {
@@ -152,7 +154,7 @@ namespace Hazel {
         m_Data.VSync = enabled;
     }
 
-    bool MacWindow::IsVSync() const { return m_Data.VSync; }
+    bool WindowsWindow::IsVSync() const { return m_Data.VSync; }
 }
 
-#endif // HZ_PLATFORM_OSX
+#endif // HZ_PLATFORM_WINDOWS

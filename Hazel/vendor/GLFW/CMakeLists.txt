@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.1...3.17 FATAL_ERROR)
 
-if(__APPLE__)
+if(APPLE)
     project(GLFW VERSION 3.3.0 LANGUAGES C)
 else()
     project(GLFW VERSION 3.4.0 LANGUAGES C)

@@ -38,5 +38,3 @@ Thumbs.db
 .idea
 cmake-build-debug
 cmake-build-release
-cmake_build-debug-visual-studio
-

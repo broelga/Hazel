@@ -1,7 +1,5 @@
 #pragma once
 
-#define HZ_ENABLE_ASSERTS
-
 #include <iostream>
 #include <memory>
 #include <utility>
