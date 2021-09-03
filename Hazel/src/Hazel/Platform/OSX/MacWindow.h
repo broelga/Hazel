@@ -1,5 +1,7 @@
 #pragma once
 
+#if defined (HZ_PLATFORM_OSX)
+
 #include "Hazel/Core/Window.h"
 #include "Hazel/Renderer/GraphicsContext.h"
 
@@ -30,7 +32,7 @@ namespace Hazel {
         virtual void Shutdown();
     private:
         GLFWwindow *m_Window;
-        GraphicsContext* m_Context;
+        GraphicsContext *m_Context;
 
         struct WindowData {
             std::string Title;
@@ -43,5 +45,6 @@ namespace Hazel {
         WindowData m_Data;
     };
 }
+#endif // HZ_PLATFORM_OSX
 
 

@@ -1,6 +1,9 @@
+#if defined (HZ_PLATFORM_OSX)
+
 #include "hzpch.h"
-#include "Hazel/Core/Log.h"
 #include "MacWindow.h"
+
+#include "Hazel/Core/Log.h"
 
 #include "Hazel/Events/ApplicationEvent.h"
 #include "Hazel/Events/MouseEvent.h"
@@ -152,3 +155,5 @@ namespace Hazel {
 
     bool MacWindow::IsVSync() const { return m_Data.VSync; }
 }
+
+#endif // HZ_PLATFORM_OSX
