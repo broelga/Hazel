@@ -2,6 +2,7 @@
 #include "Renderer.h"
 
 #include "Hazel/Platform/OpenGL/OpenGLShader.h"
+#include "Renderer2D.h"
 
 namespace Hazel {
 
@@ -9,6 +10,7 @@ namespace Hazel {
 
     void Renderer::Init() {
         RenderCommand::Init();
+        Renderer2D::Init();
     }
 
 
