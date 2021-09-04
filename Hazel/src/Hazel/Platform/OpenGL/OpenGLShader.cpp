@@ -91,7 +91,7 @@ namespace Hazel {
         HZ_CORE_ASSERT((shaderSources.size() <= 2), "We only support 2 shaders for now");
         std::array<GLenum, 2> glShaderIDs; // For keeping track of ShaderIDs
         int glShaderIDIndex = 0;
-        for (auto &kv : shaderSources) {
+        for (auto &kv: shaderSources) {
             GLenum type = kv.first;
             const std::string &source = kv.second;
 
@@ -150,7 +150,7 @@ namespace Hazel {
             glDeleteProgram(program);
 
             // Don't leak shaders either.
-            for (auto id : glShaderIDs) {
+            for (auto id: glShaderIDs) {
                 glDeleteShader(id);
             }
 
@@ -161,7 +161,7 @@ namespace Hazel {
         }
 
         // Always detach shaders after a successful link.
-        for (auto id : glShaderIDs) {
+        for (auto id: glShaderIDs) {
             glDetachShader(program, id);
         }
 
@@ -174,6 +174,19 @@ namespace Hazel {
 
     void OpenGLShader::Unbind() const {
         glUseProgram(0);
+    }
+
+
+    void OpenGLShader::SetFloat3(const std::string &name, const glm::vec3 &value) {
+        UploadUniformFloat3(name, value);
+    }
+
+    void OpenGLShader::SetFloat4(const std::string &name, const glm::vec4 &value) {
+        UploadUniformFloat4(name, value);
+    }
+
+    void OpenGLShader::SetMat4(const std::string &name, const glm::mat4 &value) {
+        UploadUniformMat4(name, value);
     }
 
     void OpenGLShader::UploadUniformInt(const std::string &name, const int value) {
